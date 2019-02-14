@@ -1,0 +1,251 @@
+<!-- /templates/index.liquid -->
+<div class="wrapper-full bgcolor-e9e9e9">
+<div class="img-matchahero">
+<div class="wrapper">
+<div class="content hero">
+<div class="column50">
+<h2>Bringing the world's best Matcha to you </h2>
+
+<div class="column100">
+<div class="btn-wrapper">
+<span class="or-circle">or</span> 
+<a href="/" class="btn-green-video video-popup"><i class="fa fa-play"></i>Watch the Video</a> 
+<a href="/collections/all" class="btn-green-store">Visit Store</a>
+</div><!--btn-wrapper-->
+</div><!--column100-->
+  
+</div><!--column50-->
+</div><!--content hero-->
+
+</div><!-- wrapper-->
+</div><!-- img-matchahero -->
+</div><!-- wrapper-full-->
+
+
+
+<div class="wrapper-full">
+<div id="pxu_cst"></div>
+</div><!-- wrapper-full-->
+
+
+
+{% if settings.header_holidaybanner_enable %}
+{% comment %} if the Holiday button is enabled this will show up {% endcomment %}
+<div class="wrapper-full">
+<div class="wrapper">
+<div class="content section-holiday-promotion">
+<div>
+  
+  <a href="/{{ settings.header_holidaybanner_link }}">
+    <picture>
+        <source media="(min-width: 750px)" srcset="https://cdn.shopify.com/s/files/1/1456/8506/files/holiday-banner-desktop.png?17891287029281834120">
+        <source media="(max-width: 550px)" srcset="https://cdn.shopify.com/s/files/1/1456/8506/files/holiday-banner-mobile.png?10814518569092050253">
+        <img src="https://cdn.shopify.com/s/files/1/1456/8506/files/holiday-banner-desktop.png?17891287029281834120" alt="Holiday Sale">
+    </picture>
+  </a>
+</div>
+</div><!--content our-mission-->
+</div><!-- wrapper-->
+</div><!-- wrapper-full-->
+{% endif %}
+
+
+
+{% unless settings.header_holidaybanner_enable %}
+{% comment %}
+  if the holidaybanner is enabled the mission section will be removed below
+{% endcomment %}
+<div class="wrapper-full">
+<div class="wrapper">
+<div class="content our-mission">
+<div class="column25">
+<h3 class="vertical-text">Our Mission</h3>
+</div><!--column25-->
+
+<div class="column75">
+<h4>With a focus <span class="italic">on</span>  quality <span class="italic">and</span> enhancing <span class="italic"><br>
+the</span> understanding <span class="italic">of</span> matcha tea</h4>
+</div><!--column75-->
+ 
+</div><!--content our-mission-->
+</div><!-- wrapper-->
+</div><!-- wrapper-full-->
+{% endunless %}
+
+
+
+
+<div class="wrapper-full">
+<div class="wrapper">
+<div class="content ctablock">
+
+
+<div class="column40">  
+<div class="column100">  
+<a href="/pages/learn#video-anchor">
+<div class="holder">
+<div id="bg_image" style="height:320px; max-width:484; background:url(https://cdn.shopify.com/s/files/1/1456/8506/files/PreparingPerfectBowl-2.jpg?12485139101530287266); no-repeat 0px 0px; background-position: center center; background-size: cover; overflow:hidden;">
+</div><!--bg_image-->
+<div class="mask">
+<div class="text">
+<h4>Learn</h4>
+<h2>Preparing the perfect bowl of matcha</h2>
+</div><!--text-->
+</div><!--mask-->
+</div><!--holder-->
+</a>
+</div><!-- column40 -->
+
+
+
+<div class="column100">  
+<a href="/pages/our-story">
+<div class="holder">
+<div id="bg_image" style="height:320px; max-width:500; background:url(https://cdn.shopify.com/s/files/1/1456/8506/files/WhereitBegins.jpg?17638670228204145448); no-repeat 0px 0px; background-position: center center; background-size: cover; overflow:hidden;">
+</div><!--bg_image-->
+<div class="mask">
+<div class="text">
+<h4>Our Story</h4>
+<h2>Where it all begins</h2>
+</div><!--text-->
+</div><!--mask-->
+</div><!--holder-->
+</a>
+</div><!-- column100 -->
+</div><!-- column40 -->
+
+  
+<div class="column60 cerimonial-grade">
+<div class="featured-tea-img">{{ 'featured-tea.svg' | asset_url | img_tag }}</div>
+<div class="text-wrapper">
+
+<a href="/{{ settings.home_product-promotion_link }}"><h2>{{ settings.home_product-promotion_title_text }}</h2></a>
+<p>{{ settings.home_product-promotion_text_title }}</p>
+<h4>{{ settings.home_product-promotion_link_text }}</h4>
+</div><!-- text-wrapper -->
+</div><!-- column60 -->
+
+</div> <!--content ctablock-->
+</div><!-- wrapper-->
+</div><!-- wrapper-full-->
+
+
+
+<div class="wrapper-full">
+<div class="wrapper">
+
+<div class="column100 matcha-japan">
+
+<div class="column50 white-text country img-country-build">
+</div> <!-- column50 -->
+
+
+<div class="column50 img-leaf-build white-text">
+<div class="text-wrap">
+<h4>Matcha Leaves <span class="italic">from</span> Japan</h4>
+<span class="green-hr-small"></span>
+<p>Our teas are grown on the pristine hillsides of Uji in the Kyoto region by farmers who are part of a 300-year-old matcha growing tradition.</p>
+</div> <!-- text-wrap -->
+</div> <!-- column50 -->
+
+</div> <!-- column100 -->
+
+</div><!-- wrapper-->
+</div><!-- wrapper-full-->
+
+
+
+<div class="wrapper-full bg-immage-tea-plates">
+<div class="bg-immage-tea-plates-mask">
+
+
+<div class="wrapper">
+
+<div class="column100 health-backed white-text">  
+<div class="column50">  
+<h2>Health backed by 1,000 years of tradition.</h2>
+<span class="green-hr-small"></span>
+<p>Matcha is the ultimate form of green tea. For more than a thousand years, Zen monks, Samurai warriors, 
+and Japanese connoisseurs have enjoyed the health benefits of this whole-leaf tea. 
+From calming effects to increased cognitive performance, matcha helps improve health and well-being.</p>
+<a href="/collections/all" class="btn-green-filled">Visit Store</a>  
+  
+</div> <!-- column50 -->
+
+</div> <!-- column100 -->
+</div><!-- wrapper-->
+</div><!-- bg-immage-tea-plates-mask-->
+</div><!-- wrapper-full-->
+
+
+
+
+
+<div class="wrapper-full">
+<div class="wrapper">
+
+<div class="column100 tradition text-center">  
+
+
+<div class="column100 title-header">  
+<h2>Tradition and quality are behind our products</h2>
+<span class="green-hr-small"></span>
+</div> <!-- column100 -->
+
+<div class="column33">
+<img src="https://cdn.shopify.com/s/files/1/1456/8506/files/Matcha_tea_fields.jpg?3893153403698526407">  
+<h4>Exclusive sourcing</h4>
+<p> We've established exclusive relationships with a handful of respected, award-winning tea growers.</p>
+</div> <!-- column33 -->
+  
+<div class="column33">  
+<img src="https://cdn.shopify.com/s/files/1/1456/8506/files/true-matcha.jpg?3893153403698526407">  
+<h4>True Matcha</h4>
+<p> Our matcha is grown in Japan and is 100% true matcha tea powder.</p>
+</div> <!-- column33 -->
+  
+<div class="column33">  
+<img src="https://cdn.shopify.com/s/files/1/1456/8506/files/quality-focused.jpg?3893153403698526407">  
+<h4>Quality-Focused</h4>
+<p> Our matcha is a vibrant green with a pleasing aroma, rich umami taste, and smooth finish.</p>
+</div> <!-- column33 -->
+
+
+</div> <!-- column100 -->
+</div><!-- wrapper-->
+</div><!-- wrapper-full-->
+
+
+{% comment %}
+{% endcomment %}
+
+{% include 'instagram-feed' %}
+
+<div class="popup_overlay closed">
+  <div class="popup_content">
+    <iframe src="https://player.vimeo.com/video/196444458" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+    <span class="close_popup"></span>
+  </div> <!-- popup_content -->
+</div> <!-- popup_overlay closed -->
+
+<script>
+  
+$(function() {
+  	console.log("Home Page");
+  $(".video-popup").on( "click", function(event) {
+    event.preventDefault()
+  	$( ".popup_overlay" ).toggleClass("open closed");
+  });
+  
+  $(".popup_overlay").on( "click", function(event) {
+  	$( ".popup_overlay" ).removeClass("open").addClass("closed");
+  });
+  
+  $(".popup_overlay").on( "click", ".close_popup", function(event) {
+  	$( ".popup_overlay" ).removeClass("open").addClass("closed");
+  });
+  
+	
+});
+  
+</script>

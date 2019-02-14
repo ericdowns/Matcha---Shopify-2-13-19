@@ -1,0 +1,201 @@
+{% paginate collection.products by 50 %}
+
+{% if collection.handle == 'all'%}
+<div class="wrapper-full">
+  <div class="wrapper">
+
+    <div class="column100 section-category-products">
+
+      <h3 class="category-headings">Categories</h3>
+
+      <div class="column50">
+        <a href="/collections/all-products">
+          <div id="bg_image" style="min-height:262px; max-width:700px; background: url(https://cdn.shopify.com/s/files/1/1456/8506/files/all-products.jpg?2636370252342081845) center center no-repeat; background-size: cover;">
+          </div><!--bg_image-->
+          <div class="mask">
+            <div class="text-wrapper">
+              <h2>All Products</h2>
+            </div><!-- text-wrapper-->
+          </div><!-- mask-->
+        </a>
+      </div><!-- column50-->
+
+      <div class="column50">
+        <a href="/collections/tea">
+          <div id="bg_image" style="min-height:262px; max-width:700px; background: url(https://cdn.shopify.com/s/files/1/1456/8506/files/teas.jpg?2636370252342081845) center center no-repeat; background-size: cover;">
+          </div><!--bg_image-->
+          <div class="mask">
+            <div class="text-wrapper">
+              <h2>Teas</h2>
+            </div><!-- text-wrapper-->
+          </div><!-- mask-->
+        </a>
+      </div><!-- column50-->
+
+      <div class="column50">
+        <a href="/collections/accessory">
+          <div id="bg_image" style="min-height:262px; max-width:700px; background: url(https://cdn.shopify.com/s/files/1/1456/8506/files/accessories.jpg?2636370252342081845) center center no-repeat; background-size: cover;">
+          </div><!--bg_image-->
+          <div class="mask">
+            <div class="text-wrapper">
+              <h2>Accessories</h2>
+            </div><!-- text-wrapper-->
+          </div><!-- mask-->
+        </a>
+      </div><!-- column50-->
+
+      <div class="column50">
+        <a href="/collections/kits">
+          <div id="bg_image" style="min-height:262px; max-width:700px; background: url(https://cdn.shopify.com/s/files/1/1456/8506/files/kits.jpg?2636370252342081845) center center no-repeat; background-size: cover;">
+          </div><!--bg_image-->
+          <div class="mask">
+            <div class="text-wrapper">
+              <h2>Starter Kits</h2>
+            </div><!-- text-wrapper-->
+          </div><!-- mask-->
+        </a>
+      </div><!-- column50-->
+    </div><!-- column100-->
+  </div><!-- wrapper-->
+</div><!-- wrapper-full--> 
+{% endif %}
+
+
+
+{% if collection.handle != 'all'%}
+<div class="wrapper-full">
+  <div class="wrapper">
+    <div class="column100 section-collection-tag-wrapper">
+      <div class="column100 section-collections-list">
+
+
+{% comment %}
+Add active classs to collections
+https://ecommerce.shopify.com/c/ecommerce-design/t/highlight-current-active-collection-on-menu-198546
+{% endcomment %}
+
+<style>
+.blog-tags li a[href="/collections/{{ handle }}"] 
+{ color: rgba(128, 185, 102, 1);}
+</style>
+
+<ul class="blog-tags">   
+  {% for link in linklists.product-collections.links %}
+  <li>{{ link.title | link_to: link.url }}</li>
+  {% endfor %}
+</ul>        
+
+{% comment %}<ul>  
+<li class="shop"><a href="/collections/all">Shop »</a></li> 
+<li class="all"><a href="/collections/all-products">All Products</a></li>
+<li class="tea"><a href="/collections/tea">Tea</a></li>
+<li class="kits"><a href="/collections/kits">Kits</a></li>
+<li class="accessories"><a href="/collections/accessory">Accessories</a>
+</ul>
+{% endcomment %}</div><!-- column100 section-collections-list-->
+
+
+{% if collection.handle == 'tea'%}
+<div class="column100 section-tags-list">
+  <ul>
+    <li><a href="/collections/tea">All</a></li>
+    {% for tag in collection.all_tags %}
+    {% if current_tags contains tag %}
+    <li class="active">{{ tag | link_to_tag: tag }}</li>
+    {% else %}
+    <li>{{ tag | link_to_tag: tag }}</li>
+    {% endif %}
+    {% endfor %}
+  </ul>
+</div><!-- column100 section-tags-list-->
+{% endif %}
+
+</div><!-- column100 section-collection-tag-wrapper-->
+
+</div> <!-- wrapper -->
+</div><!-- wrapper-full-->   
+{% endif %}
+
+
+
+
+
+<div class="wrapper-full">
+  <div class="wrapper">
+    <div class="column100 section-collection-holder">
+
+
+      {% if collection.handle != 'all'%}
+      <h1>{{ collection.title }}</h1>
+      {% endif %}
+
+
+      {% if collection.handle == 'all'%}
+      <h3 class="category-headings">All Products</h3>
+      {% endif %}
+
+
+
+      <div class="grid-uniform">
+        {% for product in collection.products %}
+        {% include 'product-grid-item' %}
+        {% else %}
+        {% if collection.handle == 'all' and current_tags == '' %}
+{% comment %}
+If collection exists but is empty, display message
+{% endcomment %}
+<div class="grid__item">
+  <p>{{ 'collections.general.no_matches' | t }}</p>
+</div> <!-- grid__item -->
+{% endif %}
+{% endfor %}
+</div> <!-- grid-uniform -->
+
+
+
+{% if paginate.pages > 1 %}
+<hr>
+<div class="pagination">
+  {{ paginate | default_pagination | replace: '&laquo; Previous', '&larr;' | replace: 'Next &raquo;', '&rarr;' }}
+</div>
+{% endif %}
+
+
+
+</div> <!-- column100 -->
+{% endpaginate %}
+</div> <!-- wrapper -->
+</div><!-- wrapper-full-->   
+
+
+
+<div class="wrapper-full bgcolor-f2f2f2">
+  <div class="wrapper">
+    <div class="column100 section-collection-promotion">
+
+
+      <div class="column50 colleft">
+        <img src="https://cdn.shopify.com/s/files/1/1456/8506/files/icon_leaf.png?8249552464242432247" class="promotion-img"/>
+        <div class="text-wrapper">
+          <h3>Caffeine level</h3>
+          <p>One serving of matcha contains between 40 and 80 mg of caffeine</p>
+        </div> <!-- text-wrapper -->
+      </div> <!-- column50 -->
+
+
+      <div class="column50 colright">
+        <img src="https://cdn.shopify.com/s/files/1/1456/8506/files/icon_japan.png?8249552464242432247" class="promotion-img"/>
+        <div class="text-wrapper">
+          <h3>Harvested in Japan</h3>
+          <p>Our teas are grown on the pristine hillsides of Uji in the Kyoto region.</p>
+        </div> <!-- text-wrapper -->
+      </div> <!-- column50 -->
+
+
+    </div> <!-- column100 -->
+  </div> <!-- wrapper -->
+</div><!-- wrapper-full-->   
+
+
+
+

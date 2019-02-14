@@ -1,0 +1,86 @@
+<!-- /templates/page.liquid -->
+{% comment %}
+<div class="wrapper-full">
+<div class="wrapper">
+
+
+<div class="column75 column-center section-general-page">
+
+<!--   <p>using page.liquid</p>
+   -->
+    <h1>{{ page.title }}</h1>
+
+    <div class="rte">
+      {{ page.content }}
+    </div>
+
+
+</div><!--column100-->
+
+</div><!-- wrapper-->
+</div><!-- wrapper-full-->
+
+{% endcomment %}
+
+
+<div class="img-matchahero" style="background: #80ae61 url('{{ 'Matcha-Kari-In-Studio-30.JPG' | file_img_url: '1500x1500', format: 'pjpg'}}') center center no-repeat; background-size: cover;">
+  <div class="bg-immage-our-story-mask">
+    <div class="wrapper">
+      <div class="content hero">
+        <h1 style="text-align: center; color: #ffffff;">Wholesale Matcha</h1>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="wrapper-full">
+  <div class="wrapper">
+
+
+    <div class="column75 column-center section-general-page">
+      {{ page.content }}
+
+
+
+
+      <div class="column75 column-center section-form-holder wholesale-form">
+        <div class="form-vertical">
+          {% form 'contact' %}
+
+            {% comment %}
+            Successful message
+            {% endcomment %}
+            {% if form.posted_successfully? %}
+            <p class="note form-success">
+              {{ 'contact.form.post_success' | t }}
+            </p>
+            {% endif %}
+
+            {{ form.errors | default_errors }}
+
+            {% assign name_attr = 'contact.form.wholesale_name' | t | handle %}
+            <label for="WholesaleFormName">{{ 'contact.form.wholesale_name' | t }} <span style="color: red;">*</span></label>
+            <input required type="text" id="WholesaleFormName" class="input-full" name="contact[{{ name_attr }}]" autocapitalize="words" value="{% if form[name_attr] %}{{ form[name_attr] }}{% elsif customer %}{{ customer.name }}{% endif %}">
+
+            <label for="WholesaleFormEmail">{{ 'contact.form.wholesale_email' | t }} <span style="color: red;">*</span></label>
+            <input required type="email" id="WholesaleFormEmail" class="input-full" name="contact[email]" autocorrect="off" autocapitalize="off" value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}">
+
+            {% assign name_attr = 'contact.form.company' | t | handle %}
+            <label for="WholesaleFormCompany">{{ 'contact.form.company' | t }}</label>
+            <input type="text" id="WholesaleFormCompany" class="input-full" name="contact[{{ name_attr }}]" autocapitalize="words" value="{% if form[name_attr] %}{{ form[name_attr] }}{% endif %}">
+
+            {% assign name_attr = 'contact.form.phone' | t | handle %}
+            <label for="WholesaleFormPhone">{{ 'contact.form.phone' | t }}</label>
+            <input type="tel" id="WholesaleFormPhone" class="input-full" name="contact[{{ name_attr }}]" pattern="[0-9\-]*" value="{% if form[name_attr] %}{{ form[name_attr] }}{% elsif customer %}{{ customer.phone }}{% endif %}">
+
+            <label for="WholesaleFormMessage">{{ 'contact.form.wholesale_message' | t }} <span style="color: red;">*</span></label>
+            <textarea required rows="4" id="WholesaleFormMessage" class="input-full" name="contact[body]">{% if form.body %}{{ form.body }}{% endif %}</textarea>
+
+            <input type="submit" class="btn right" value="{{ 'contact.form.send' | t }}">
+
+          {% endform %}
+        </div>  <!--form-vertical-->
+      </div> <!--column75-->
+    </div><!--column100-->
+  </div><!-- wrapper-->
+</div><!-- wrapper-full-->
+

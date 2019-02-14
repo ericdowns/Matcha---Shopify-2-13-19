@@ -1,0 +1,47 @@
+<!-- /templates/customers/register.liquid -->
+
+<div class="wrapper-full">
+<div class="wrapper">
+<div class="column100 section-accounts">
+
+
+<div class="column50 column-center">
+<!-- <p>using customers/register.liquid</p> -->
+
+<h1>{{ 'customer.register.title' | t }}</h1>
+
+<div class="form-vertical">
+{% form 'create_customer' %}
+
+{{ form.errors | default_errors }}
+
+<label for="FirstName" class="hidden-label">{{ 'customer.register.first_name' | t }}</label>
+<input type="text" name="customer[first_name]" id="FirstName" class="input-full" placeholder="{{ 'customer.register.first_name' | t }}" {% if form.first_name %}value="{{ form.first_name }}"{% endif %} autocapitalize="words" autofocus>
+
+<label for="LastName" class="hidden-label">{{ 'customer.register.last_name' | t }}</label>
+<input type="text" name="customer[last_name]" id="LastName" class="input-full" placeholder="{{ 'customer.register.last_name' | t }}" {% if form.last_name %}value="{{ form.last_name }}"{% endif %} autocapitalize="words">
+
+<label for="Email" class="hidden-label">{{ 'customer.register.email' | t }}</label>
+<input type="email" name="customer[email]" id="Email" class="input-full{% if form.errors contains 'email' %} error{% endif %}" placeholder="{{ 'customer.register.email' | t }}" {% if form.email %} value="{{ form.email }}"{% endif %} autocorrect="off" autocapitalize="off">
+
+<label for="CreatePassword" class="hidden-label">{{ 'customer.register.password' | t }}</label>
+<input type="password" name="customer[password]" id="CreatePassword" class="input-full{% if form.errors contains 'password' %} error{% endif %}" placeholder="{{ 'customer.register.password' | t }}">
+
+<p><input type="submit" value="{{ 'customer.register.submit' | t }}" class="btn btn--full"></p>
+
+
+<p><a href="/account/login">Log in</a></p>
+<!-- <p><a href="{_{ shop.url }}">{_{ 'customer.register.cancel' | t }}</a></p>-->
+<p><a href="/collections/all">{{ 'customer.login.cancel' | t }}</a></p>
+
+
+
+{% endform %}
+</div><!-- form-vertical -->
+
+
+</div><!--column50-->
+
+</div><!--column100-->
+</div><!-- wrapper-->
+</div><!-- wrapper-full-->

@@ -1,0 +1,48 @@
+<!-- /templates/blog.liquid -->
+
+
+<div class="wrapper-full">
+<div class="wrapper">
+
+{% paginate blog.articles by 10 %}
+{% include 'breadcrumb' %}
+
+
+<div class="column100 section-blogwrapper">
+
+{% if current_tags %}
+<h1>{{ blog.title | link_to: blog.url }} &mdash; {{ current_tags.first }}</h1>
+{% else %}
+<h1>{{ blog.title }}</h1>
+{% endif %}
+
+
+{% for article in blog.articles %}
+<div class="article">
+<h3>{{ article.title }}</h3>
+<p class="date-title">{{ article.created_at | date: "%B %d, %Y" }} </p>
+<div class="rte">
+<p>{{ article.content }}</p>
+</div> 
+</div> <!-- article -->
+
+
+{% unless forloop.last %}<hr>{% endunless %}
+{% endfor %}
+
+{% if paginate.pages > 1 %}
+<hr>
+<div class="pagination">
+{{ paginate | default_pagination }}
+</div>
+{% endif %}
+
+
+
+
+</div> <!-- column100 -->
+
+{% endpaginate %}
+
+</div><!-- wrapper-->
+</div><!-- wrapper-full-->

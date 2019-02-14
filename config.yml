@@ -1,0 +1,10 @@
+development:
+  password: 1a3da333208d99c9b0cacfe63f9036d4
+  theme_id: "43887886449"
+  store: matcha-8.myshopify.com
+  ignore_files:
+  - config/settings_data.json
+  - config.codekit3
+  - .git
+  - .gitinone
+  - README.md

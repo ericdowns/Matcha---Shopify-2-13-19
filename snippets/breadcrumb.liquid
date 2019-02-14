@@ -1,0 +1,90 @@
+<!-- /snippets/breadcrumb.liquid -->
+{% comment %}
+Documentation - http://docs.shopify.com/support/your-website/navigation/creating-a-breadcrumb-navigation
+{% endcomment %}
+
+
+
+{% unless template == 'index' or template == 'cart'%}
+
+<nav class="breadcrumb" role="navigation" aria-label="breadcrumbs">
+
+
+{% if template contains 'product' %}
+<a href="/collections/all" title="Back to Shop">Shop</a>
+
+{% else %}
+<a href="/" title="{{ 'general.breadcrumbs.home_link_title' | t }}">{{ 'general.breadcrumbs.home' | t }}</a>
+{% endif %}
+
+
+
+<!-- Template is Product ================================================== -->
+{% if template contains 'product' %}
+
+{% if collection %}
+<span aria-hidden="true">/</span>
+{% if collection.handle %}
+{% capture url %}/collections/{{ collection.handle }}{% endcapture %}
+{{ collection.title | link_to: url }}
+{% endif %}
+{% endif %}
+<span aria-hidden="true">/</span>
+<span>{{ product.title }} </span>
+
+
+
+<!-- Template is Collection ================================================== -->
+{% elsif template contains 'collection' and collection.handle %}
+
+<span aria-hidden="true">/</span>
+{% if current_tags %}
+{% capture url %}/collections/{{ collection.handle }}{% endcapture %}
+{{ collection.title | link_to: url }}
+<span aria-hidden="true">/</span>
+<span>{{ current_tags | join: " + " }}</span>
+{% else %}
+<span>{{ collection.title }}</span>
+{% endif %}
+
+
+  
+<!-- Template is Blog ================================================== -->
+{% elsif template == 'blog' %}
+
+<span aria-hidden="true">/</span>
+{% if current_tags %}
+{{ blog.title | link_to: blog.url }}
+<span aria-hidden="true">/</span>
+<span>{{ current_tags | join: " + " }}</span>
+{% else %}
+<span>{{ blog.title }}</span>
+{% endif %}
+
+
+  
+<!-- Template is Article ================================================== -->
+{% elsif template == 'article' %}
+<span aria-hidden="true">/</span>
+{{ blog.title | link_to: blog.url }}
+<span aria-hidden="true">/</span>
+<span>{{ article.title }}</span>
+
+  
+
+<!-- Template is Page ================================================== -->
+{% elsif template contains 'page' %}
+<span aria-hidden="true">/</span>
+<span>{{ page.title }}</span>
+
+
+  
+{% else %}
+<!-- Template is None of the Above ================================================== -->
+<span aria-hidden="true">/</span>
+<span>{{ page_title }}</span>
+
+  
+{% endif %}
+</nav>
+{% endunless %}

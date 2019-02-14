@@ -1,0 +1,11 @@
+{% comment %}
+=======================================================
+Schema to show shipping offer. 
+See » Shipping Notifications » Single Products
+=======================================================
+{% endcomment %}
+
+
+{% if settings.shipping_enable_shipping_single_product %}
+<p class="free-shipping">{{ settings.shipping_single_product }}</p>
+{% endif %}

@@ -1,0 +1,101 @@
+<!-- /templates/page.contact.liquid -->
+{% comment %}
+
+  This page template is a requirement if you are submitting your theme to the Shopify Theme Store.
+  Be sure to select page.contact as the template from the admin page to have this template take effect.
+
+  For information on adding more fields, visit:
+    - http://docs.shopify.com/support/configuration/store-customization/adding-fields-to-the-liquid-contact-form
+
+{% endcomment %}
+
+
+<div class="wrapper-full">
+<div class="wrapper">
+
+<div class="column100 column-center section-general-page">
+
+<!--     <h1>{_{ page.title }}</h1> -->
+    <div class="rte">
+      {{ page.content }}
+    </div>
+
+
+<div class="column100 section-contact-3cols">
+
+<div class="column33">
+<img src="https://cdn.shopify.com/s/files/1/1456/8506/files/icon_chat.png?17831480311175710605"/>
+<h3>General questions</h3>
+<p>Look through our <a href="/pages/faq">FAQs</a></p>
+</div> <!-- column33 -->
+  
+<div class="column33">
+<img src="https://cdn.shopify.com/s/files/1/1456/8506/files/icon_email.png?17831480311175710605"/>
+<h3>Send us an email</h3>
+<p><a href="mailto:info@matcha.com">info@matcha.com</a></p>
+</div> <!-- column33 -->
+
+<div class="column33">
+<img src="https://cdn.shopify.com/s/files/1/1456/8506/files/icon_press.png?17831480311175710605"/>
+<h3>Press</h3>
+<p>See our reviews, articles, and news <a href="/blogs/press">here</a>.</p>
+</div> <!-- column33 -->
+
+</div> <!-- column100 -->
+
+
+
+
+ <div class="column60 section-form-holder">
+
+<h3>Fill out the form</h3>
+  
+ <div class="form-vertical">
+      {% form 'contact' %}
+
+        {% comment %}
+          Successful message
+        {% endcomment %}
+        {% if form.posted_successfully? %}
+          <p class="note form-success">
+            {{ 'contact.form.post_success' | t }}
+          </p>
+        {% endif %}
+
+        {{ form.errors | default_errors }}
+
+        {% assign name_attr = 'contact.form.name' | t | handle %}
+        <label for="ContactFormName" class="hidden-label">{{ 'contact.form.name' | t }}</label>
+        <input type="text" id="ContactFormName" class="input-full" name="contact[{{ name_attr }}]" placeholder="{{ 'contact.form.name' | t }}" autocapitalize="words" value="{% if form[name_attr] %}{{ form[name_attr] }}{% elsif customer %}{{ customer.name }}{% endif %}">
+
+        <label for="ContactFormEmail" class="hidden-label">{{ 'contact.form.email' | t }}</label>
+        <input type="email" id="ContactFormEmail" class="input-full" name="contact[email]" placeholder="{{ 'contact.form.email' | t }}" autocorrect="off" autocapitalize="off" value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}">
+
+        {% assign name_attr = 'contact.form.phone' | t | handle %}
+        <label for="ContactFormPhone" class="hidden-label">{{ 'contact.form.phone' | t }}</label>
+        <input type="tel" id="ContactFormPhone" class="input-full" name="contact[{{ name_attr }}]" placeholder="{{ 'contact.form.phone' | t }}" pattern="[0-9\-]*" value="{% if form[name_attr] %}{{ form[name_attr] }}{% elsif customer %}{{ customer.phone }}{% endif %}">
+
+        <label for="ContactFormMessage" class="hidden-label">{{ 'contact.form.message' | t }}</label>
+        <textarea rows="10" id="ContactFormMessage" class="input-full" name="contact[body]" placeholder="{{ 'contact.form.message' | t }}">{% if form.body %}{{ form.body }}{% endif %}</textarea>
+
+        <input type="submit" class="btn right" value="{{ 'contact.form.send' | t }}">
+
+      {% endform %}
+    </div>  <!--form-vertical-->
+</div> <!--column75-->
+
+
+ <div class="column40 section-sidebar">
+<p>7650 E. Broadway Blvd., Ste 310<br />
+Tucson, AZ, 85710<br />
+612.562.8242
+</p>
+
+</div> <!--column25-->
+
+
+
+</div> <!--column100-->
+
+</div><!-- wrapper-->
+</div><!-- wrapper-full-->
