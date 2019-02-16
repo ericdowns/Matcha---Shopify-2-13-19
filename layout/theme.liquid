@@ -35,8 +35,11 @@
   <!-- CSS ================================================== -->
   {% comment %}{{ 'style.scss' | asset_url | stylesheet_tag }}{% endcomment %}
   {{ 'style.css' | asset_url | stylesheet_tag }}
-  {{ 'format.css' | asset_url | stylesheet_tag }}
+  
+  <!-- {{ 'format.css' | asset_url | stylesheet_tag }} -->
   {% comment %}https://raw.githack.com//{% endcomment %}
+  <link rel="stylesheet" type="text/css" href="https://rawcdn.githack.com/ericdowns/Matcha---Shopify-2-13-19/cb95824648da29730fc9e00ba52181e98e5aeffe/assets/format_wip.css">
+
   {{ '//fonts.googleapis.com/css?family=Playfair+Display:400,400i,700,700i' | stylesheet_tag }}
   {{ '//fonts.googleapis.com/css?family=Crimson+Text:400,400i,600,600i,700,700i' | stylesheet_tag }}  
   {{ '//fonts.googleapis.com/css?family=Pathway+Gothic+One' | stylesheet_tag }}
@@ -76,7 +79,6 @@
     <div class="msgOverlayClose"></div>
   </div>
   
-
   <!-- START » Left Side Mobile Menu ================================================== -->
   <div id="NavDrawer" class="drawer drawer--left">
     <div class="drawer__header">
@@ -92,8 +94,6 @@
     {% include 'mobile-nav' %}
   </div><!-- NavDrawer -->
   <!-- END » Left Side Mobile Menu ================================================== -->
-
-
 
   <!-- START » Right Side Cart Drawer ================================================== -->
   {% if settings.ajax_cart_method == "drawer" %}
@@ -112,17 +112,12 @@
   {% endif %}
   <!-- END » Right Side Cart Drawer ================================================== -->
 
-
-
   <div id="PageContainer" class="is-moved-by-drawer">
-
     <header class="site-header" role="banner">
       <!-- START » Logo Holder ================================================== -->
     </header>
 
-
     <!-- Start » Desktop Navigation ================================================== -->
-
     {% if settings.shipping_enable %}
     <div class="wrapper-full section-shipping">
       <div class="wrapper">
@@ -144,43 +139,32 @@
     </div><!-- wrapper-full -->
     {% endif %}
 
-
-
     {% if settings.header_holiday_enable %}
     <div class="wrapper-full section-holiday-banner">
       <div class="wrapper">
         <div class="holiday-wrapper">
-
           <p class="holiday-pathway-gothic"> <span class="holiday-star"></span>Holiday Sale<span class="holiday-star"></span></p>
           <p>{{ settings.header_holiday_text_title }}</p>
           <p><a href="/{{settings.header_holiday_button_link}}" class="holiday-btn"> {{settings.header_holiday_button_text}} </a></p>
-
         </div> {% comment %}holiday-wrapper{% endcomment %}
       </div><!-- wrapper -->
     </div><!-- wrapper-full -->
     {% endif %}
 
-
-
     <nav class="nav-bar-new" role="navigation">
       <div class="wrapper">
-
         <div class="medium-down--hide">
           <ul class="site-nav-new" id="AccessibleNav">
-
             <div class="navmenu-lefthalf">
               <li class="nav-item shop"><a href="/collections/all">Shop</a></li>
               <li class="nav-item lean"><a href="/pages/learn">Learn</a></li>
               <li class="nav-item story"><a href="/pages/our-story">Our Story</a></li>
               <li class="nav-item journal"><a href="/blogs/news">Journal</a></li>    
             </div><!-- navmenu-lefthalf -->
-
             <div class="navmenu-logoholder">
               <li class="logo">
                <span itemscope itemtype="http://schema.org/Organization">
                 <a href="/" itemprop="url">{{ 'logo.png' | asset_url | img_tag }}</a></span></li>
-
-
               </div><!-- navmenu-logoholder -->
               <div class="navmenu-righthalf">
                 <li class="nav-item wholesale"><a href="/pages/matcha-wholesale">Wholesale</a></li> 
@@ -191,27 +175,17 @@
                   {{ 'layout.customer.log_in' | t | customer_login_link }}
                   {% endif %}
                 </li>
-
                 <li class="nav-item search"><a href="/search"><span class="icon">{{ 'icon-search.svg' | asset_url | img_tag }}</span>Search</a></li>
-
                 <li class="nav-item cart"><a href="/cart" class="site-header__cart-toggle js-drawer-open-right" aria-controls="CartDrawer" aria-expanded="false">
                  <span class="icon">{{ 'icon-cart.svg' | asset_url | img_tag }}</span> 
                  My Cart <span id="CartCount">({{ cart.item_count  }})</span>
                </a></li>
              </div><!-- navmenu-lefthalf -->
-
-
            </ul> <!-- AccessibleNav -->
          </div><!-- medium-down--hide -->
-
          <!-- Ends Desktop Navigation ================================================== -->
-
-
-
-
          <div class="large--hide medium-down--show">
           <div class="grid">
-
             <div class="column25 section-menu-nav">
               <div class="site-nav--mobile">
                 <button type="button" class="icon-fallback-text site-nav__link js-drawer-open-left" aria-controls="NavDrawer" aria-expanded="false">
@@ -220,17 +194,11 @@
                 </button>
               </div><!-- site-nav--mobile -->
             </div> <!-- column25 section-cart-mobile -->
-
-
-
-
             <div class="column50 mobile-logo-holder-wrapper">
               <div class="column50 mobile-logo-holder column-center">
                 <a href="/" itemprop="url">{{ 'logo.png' | asset_url | img_tag }}</a>
               </div>
             </div>
-
-
             <div class="column25 section-cart-nav">
               <div class="site-nav--mobile">
                 <a href="/cart" class="js-drawer-open-right site-nav__link" aria-controls="CartDrawer" aria-expanded="false">
@@ -242,7 +210,6 @@
               </div> <!-- site-nav--mobile -->
             </div> <!-- grid__item one-half text-right -->
           </div> <!--grid -->
-
         </div> <!-- large--hide medium-down--show -->
       </div> <!--wrapper -->
     </nav>
