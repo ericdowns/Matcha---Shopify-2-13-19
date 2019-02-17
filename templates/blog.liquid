@@ -1,92 +1,66 @@
 <!-- /templates/blog.liquid -->
-
-
 <div class="wrapper-full">
-<div class="wrapper">
-{% paginate blog.articles by 5 %}
-<!-- {_% include 'breadcrumb' %} -->
-<div class="column100 section-blogwrapper">
-<!-- {_% include 'blog-sidebar' %}-->
-<!--    <h2>using blog.liquid</h2> -->
-
-
-<div class="column100 section-pagetitle">
-{% if current_tags %}
-<h1>{{ blog.title | link_to: blog.url }}</h1>
-{% else %}
-<h1>{{ blog.title }}</h1>
-{% endif %}
- 
-
-
-
-{% if blog.all_tags.size > 0 %}
-  <ul class="blog-tags">
-    {% for tag in blog.all_tags %}
-      {% if current_tags contains tag %}
-      <li>{{ tag }}</li>
-      {% else %}
-      <li>{{ tag | link_to_tag: tag }}</li>
+  <div class="wrapper">
+    {% paginate blog.articles by 5 %}
+    <!-- {_% include 'breadcrumb' %} -->
+    <div class="column100 section-blogwrapper">
+      <!-- {_% include 'blog-sidebar' %}-->
+      <!--    <h2>using blog.liquid</h2> -->
+      <div class="column100 section-pagetitle">
+        {% if current_tags %}
+        <h1>{{ blog.title | link_to: blog.url }}</h1>
+        {% else %}
+        <h1>{{ blog.title }}</h1>
+        {% endif %}
+        {% if blog.all_tags.size > 0 %}
+        <ul class="blog-tags">
+          {% for tag in blog.all_tags %}
+          {% if current_tags contains tag %}
+          <li>{{ tag }}</li>
+          {% else %}
+          <li>{{ tag | link_to_tag: tag }}</li>
+          {% endif %}
+          {% endfor %}
+        </ul>
+        {% endif %}
+      </div><!-- column100 -->
+      {% for article in blog.articles %}
+      <div class="article">
+        {% if article.image %}
+        <a class="article__featured-image" href="{{ article.url }}">
+          {{ article | img_url: '1024x1024' | img_tag: article.title }}
+        </a>
+        {% endif %}
+        <div class="column50 colleft">
+          <h3><a href="{{ article.url }}">{{ article.title }}</a></h3>
+          <p class="date-title"> {{ article.author }} | {{ article.created_at | date: "%B %d, %Y" }} 
+            {% if article.tags.size > 0 %}
+            | {% for tag in article.tags %}
+            <a href="{{ blog.url }}/tagged/{{ tag | handle }}">{{ tag }}</a>{% unless forloop.last %}, {% endunless %}
+            {% endfor %}
+            {% endif %}
+          </p>
+        </div> <!-- column50 -->
+        <div class="column50 colright">
+          <div class="rte">
+            {% if article.excerpt.size > 0 %}
+            {{ article.excerpt }}
+            {% else %}
+            <p>{{ article.content | strip_html | truncatewords: 50 }}</p>
+            {% endif %}
+          </div>
+          <p class="read-more"><a href="{{ article.url }}">{{ 'blogs.article.read_more' | t }}</a></p>
+        </div> <!-- column50 -->
+      </div> <!--article-->
+      {% unless forloop.last %}<hr>{% endunless %}
+      {% endfor %}
+      {% if paginate.pages > 1 %}
+      <hr>
+      <div class="pagination">
+        {{ paginate | default_pagination }}
+      </div><!--pagination-->
       {% endif %}
-    {% endfor %}
-  </ul>
-{% endif %}
-
-
-</div><!-- column100 -->
-
-{% for article in blog.articles %}
-<div class="article">
-
-
-{% if article.image %}
-<a class="article__featured-image" href="{{ article.url }}">
-{{ article | img_url: '1024x1024' | img_tag: article.title }}
-</a>
-{% endif %}
-
-
-<div class="column50 colleft">
-<h3><a href="{{ article.url }}">{{ article.title }}</a></h3>
-<p class="date-title"> {{ article.author }} | {{ article.created_at | date: "%B %d, %Y" }} 
-{% if article.tags.size > 0 %}
-    | {% for tag in article.tags %}
-      <a href="{{ blog.url }}/tagged/{{ tag | handle }}">{{ tag }}</a>{% unless forloop.last %}, {% endunless %}
-    {% endfor %}
-{% endif %}
-</p>
-  
-
-</div> <!-- column50 -->
-
-
-<div class="column50 colright">
-
-<div class="rte">
-{% if article.excerpt.size > 0 %}
-{{ article.excerpt }}
-{% else %}
-<p>{{ article.content | strip_html | truncatewords: 50 }}</p>
-{% endif %}
-</div>
-  
-<p class="read-more"><a href="{{ article.url }}">{{ 'blogs.article.read_more' | t }}</a></p>
-</div> <!-- column50 -->
-
-</div> <!--article-->
-
-{% unless forloop.last %}<hr>{% endunless %}
-{% endfor %}
-
-{% if paginate.pages > 1 %}
-<hr>
-<div class="pagination">
-{{ paginate | default_pagination }}
-</div><!--pagination-->
-{% endif %}
-
-
-</div> <!-- column100 -->
-{% endpaginate %}
-</div><!-- wrapper-->
+    </div> <!-- column100 -->
+    {% endpaginate %}
+  </div><!-- wrapper-->
 </div><!-- wrapper-full-->

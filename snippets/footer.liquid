@@ -1,75 +1,60 @@
 <footer class="site-footer small--text-center" role="contentinfo">
-
-  
-<div class="wrapper">
-<div class="grid--full footergrid">
-
-<div class="column100 footerwrapper">  
-
-<div class="column25">  
-<ul class="footernav">
-<li><a href="/account">Account</a></li>
-<li><a href="/pages/faq">FAQ</a></li>
-<li><a href="/blogs/press">Press</a></li> 
-<li><a href="/pages/returns-exchanges">Returns &amp; Exchanges</a></li>
-<li><a href="/pages/jobs">Careers</a></li>
-<li><a href="/pages/contact">Contact</a></li>
-<li><a href="/pages/matcha-wholesale">Wholesale</a></li>
-</ul>
-</div><!--column25-->
-
-
-
-<div class="column50 text-center">  
-<h2>Be a part of the tradition</h2>
-<p>Join the mailing list for our “all things matcha” newsletter</p>
-
-{% if settings.footer_newsletter_enable %}
-<div class="newsletter">
-{% if settings.newsletter_form_action != blank %}
-<form action="{{ settings.newsletter_form_action }}" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" target="_blank" class="input-group">
-<input type="email" value="{% if customer %}{{ customer.email }}{% endif %}" placeholder="{{ 'general.newsletter_form.newsletter_email' | t }}" name="EMAIL" id="mail" class="input-group-field" aria-label="{{ 'general.newsletter_form.newsletter_email' | t }}" autocorrect="off" autocapitalize="off">
-<span class="input-group-btn">
-<input type="submit" class="btn" name="subscribe" id="subscribe" value="{{ 'general.newsletter_form.submit' | t }}">
-</span>
-</form>
-{% else %}
-{% form 'customer' %}
-{{ form.errors | default_errors }}
-{% if form.posted_successfully? %}
-<p class="note form-success">{{ 'general.newsletter_form.confirmation' | t }}</p>
-{% else %}
-<div class="input-group">
-<input type="email" value="{% if customer %}{{ customer.email }}{% endif %}" placeholder="{{ 'general.newsletter_form.newsletter_email' | t }}" name="contact[email]" id="Email" class="input-group-field" aria-label="{{ 'general.newsletter_form.newsletter_email' | t }}" autocorrect="off" autocapitalize="off">
-<input type="hidden" name="contact[tags]" value="newsletter">
-<span class="input-group-btn">
-<input type="submit" class="btn" name="subscribe" id="subscribe" value="{{ 'general.newsletter_form.submit' | t }}">
-</span>
-</div>
-{% endif %}
-{% endform %}
-{% endif %}
-</div> <!-- newsletter -->
-{% endif %}
-</div><!-- column50 -->
-
-
-<div class="column25">  
-<ul class="footersocials">
-<li><a href="https://www.instagram.com/matchakari" target="_blank">{{ 'icon-instagram.svg' | asset_url | img_tag }}</a></li>
-<li><a href="https://www.facebook.com/matchakari/" target="_blank">{{ 'icon-facebook.svg' | asset_url | img_tag }}</a></li>
-<li><a href="https://twitter.com/MatchaKari" target="_blank">{{ 'icon-twitter.svg' | asset_url | img_tag }}</a></li>
-</ul>
-</div><!--column25-->
-
-</div><!-- column100 -->
-
-
-<div class="column100 credits text-center">  
-  <a href="/">&copy;{{ 'now' | date: "%Y" }} MatchaKari</a>  <span class="sep">|</span>  <a href="/pages/terms-of-service">Terms</a>  <span class="sep">|</span>  <a href="/pages/privacy-policy">Privacy Policy</a>
-</div><!-- column100 -->
-
-
-</div> <!-- grid footergrid -->
-</div> <!-- wrapper -->
+	<div class="wrapper">
+		<div class="grid--full footergrid">
+			<div class="column100 footerwrapper">  
+				<div class="column25">  
+					<ul class="footernav">
+						<li><a href="/account">Account</a></li>
+						<li><a href="/pages/faq">FAQ</a></li>
+						<li><a href="/blogs/press">Press</a></li> 
+						<li><a href="/pages/returns-exchanges">Returns &amp; Exchanges</a></li>
+						<li><a href="/pages/jobs">Careers</a></li>
+						<li><a href="/pages/contact">Contact</a></li>
+						<li><a href="/pages/matcha-wholesale">Wholesale</a></li>
+					</ul>
+				</div><!--column25-->
+				<div class="column50 text-center">  
+					<h2>Be a part of the tradition</h2>
+					<p>Join the mailing list for our “all things matcha” newsletter</p>
+					{% if settings.footer_newsletter_enable %}
+					<div class="newsletter">
+						{% if settings.newsletter_form_action != blank %}
+						<form action="{{ settings.newsletter_form_action }}" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" target="_blank" class="input-group">
+							<input type="email" value="{% if customer %}{{ customer.email }}{% endif %}" placeholder="{{ 'general.newsletter_form.newsletter_email' | t }}" name="EMAIL" id="mail" class="input-group-field" aria-label="{{ 'general.newsletter_form.newsletter_email' | t }}" autocorrect="off" autocapitalize="off">
+							<span class="input-group-btn">
+								<input type="submit" class="btn" name="subscribe" id="subscribe" value="{{ 'general.newsletter_form.submit' | t }}">
+							</span>
+						</form>
+						{% else %}
+						{% form 'customer' %}
+						{{ form.errors | default_errors }}
+						{% if form.posted_successfully? %}
+						<p class="note form-success">{{ 'general.newsletter_form.confirmation' | t }}</p>
+						{% else %}
+						<div class="input-group">
+							<input type="email" value="{% if customer %}{{ customer.email }}{% endif %}" placeholder="{{ 'general.newsletter_form.newsletter_email' | t }}" name="contact[email]" id="Email" class="input-group-field" aria-label="{{ 'general.newsletter_form.newsletter_email' | t }}" autocorrect="off" autocapitalize="off">
+							<input type="hidden" name="contact[tags]" value="newsletter">
+							<span class="input-group-btn">
+								<input type="submit" class="btn" name="subscribe" id="subscribe" value="{{ 'general.newsletter_form.submit' | t }}">
+							</span>
+						</div>
+						{% endif %}
+						{% endform %}
+						{% endif %}
+					</div> <!-- newsletter -->
+					{% endif %}
+				</div><!-- column50 -->
+				<div class="column25">  
+					<ul class="footersocials">
+						<li><a href="https://www.instagram.com/matchakari" target="_blank">{{ 'icon-instagram.svg' | asset_url | img_tag }}</a></li>
+						<li><a href="https://www.facebook.com/matchakari/" target="_blank">{{ 'icon-facebook.svg' | asset_url | img_tag }}</a></li>
+						<li><a href="https://twitter.com/MatchaKari" target="_blank">{{ 'icon-twitter.svg' | asset_url | img_tag }}</a></li>
+					</ul>
+				</div><!--column25-->
+			</div><!-- column100 -->
+			<div class="column100 credits text-center">  
+				<a href="/">&copy;{{ 'now' | date: "%Y" }} MatchaKari</a>  <span class="sep">|</span>  <a href="/pages/terms-of-service">Terms</a>  <span class="sep">|</span>  <a href="/pages/privacy-policy">Privacy Policy</a>
+			</div><!-- column100 -->
+		</div> <!-- grid footergrid -->
+	</div> <!-- wrapper -->
 </footer>  <!-- //site-footer -->

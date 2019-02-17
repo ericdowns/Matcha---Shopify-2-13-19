@@ -1,82 +1,60 @@
 <div class="wrapper-full">
-<div class="wrapper">
-{% include 'breadcrumb' %}
-
-<div class="column100 section-blogwrapper">
-<article itemscope itemtype="http://schema.org/Article">
-
-
-<header class="section-header">
-
-<div class="section-pagetitle-article">
-<h1>{{ article.title }}</h1>
-<p class="date-title"> {{ article.author }} | {{ article.created_at | date: "%B %d, %Y" }} 
-{% if article.tags.size > 0 %}
-    | {% for tag in article.tags %}
-      <a href="{{ blog.url }}/tagged/{{ tag | handle }}">{{ tag }}</a>{% unless forloop.last %}, {% endunless %}
-    {% endfor %}
-{% endif %}
-</p>
-  
-</div><!--section-header__left-->
-
-</header>
-
-  
-<div class="rte" itemprop="articleBody">
-{% if article.image %}
-<div class="featured-image"> {{ article | img_url: '1024x1024' | img_tag: article.title }}  </div>
-{% endif %}
-<div class="article-content">
-{{ article.content }}
-
-
+	<div class="wrapper">
+		{% include 'breadcrumb' %}
+		<div class="column100 section-blogwrapper">
+			<article itemscope itemtype="http://schema.org/Article">
+				<header class="section-header">
+					<div class="section-pagetitle-article">
+						<h1>{{ article.title }}</h1>
+						<p class="date-title"> {{ article.author }} | {{ article.created_at | date: "%B %d, %Y" }} 
+							{% if article.tags.size > 0 %}
+							| {% for tag in article.tags %}
+							<a href="{{ blog.url }}/tagged/{{ tag | handle }}">{{ tag }}</a>{% unless forloop.last %}, {% endunless %}
+							{% endfor %}
+							{% endif %}
+						</p>
+					</div><!--section-header__left-->
+				</header>
+				<div class="rte" itemprop="articleBody">
+					{% if article.image %}
+					<div class="featured-image"> {{ article | img_url: '1024x1024' | img_tag: article.title }}  </div>
+					{% endif %}
+					<div class="article-content">
+						{{ article.content }}
 <!-- {_% include 'addthis' %}
- -->
+-->
 <div class="addthis_inline_share_toolbox"></div>
-
-
-
 </div> <!-- article-content -->
 </div> <!-- rte -->
-
 <div class="pagination">
-
-<div class="column100 section-prev-next">
-{% if blog.next_article or blog.previous_article %}
-<hr>
-
-<p class="clearfix">
-{% if blog.previous_article %}
-<span class="left">
-&larr; {{ 'blogs.article.older_post' | t | link_to: blog.previous_article }}
-</span>
-{% endif %}
-
-  {% if blog.next_article %}
-<span class="right">
-{{ 'blogs.article.newer_post' | t | link_to: blog.next_article }} &rarr;
-</span>
-{% endif %}
-</p>
-{% endif %}
-</div><!-- column100 -->  
+	<div class="column100 section-prev-next">
+		{% if blog.next_article or blog.previous_article %}
+		<hr>
+		<p class="clearfix">
+			{% if blog.previous_article %}
+			<span class="left">
+				&larr; {{ 'blogs.article.older_post' | t | link_to: blog.previous_article }}
+			</span>
+			{% endif %}
+			{% if blog.next_article %}
+			<span class="right">
+				{{ 'blogs.article.newer_post' | t | link_to: blog.next_article }} &rarr;
+			</span>
+			{% endif %}
+		</p>
+		{% endif %}
+	</div><!-- column100 -->  
 </article>
-
 </div><!-- column100 -->
 </div><!-- wrapper-->
 </div><!-- wrapper-full-->
-
-
 <div class="wrapper-full">
-<div class="wrapper">
-<div class="column100 section-related-posts-wrapper">
-{% include 'related-blogposts' %}
-  
-  <div class="column50 all-posts">
-  <a href="/blogs/news" class="btn">All Posts</a>
-  </div><!-- column50 -->
-
-  </div><!-- column100 -->
-</div><!-- wrapper-->
+	<div class="wrapper">
+		<div class="column100 section-related-posts-wrapper">
+			{% include 'related-blogposts' %}
+			<div class="column50 all-posts">
+				<a href="/blogs/news" class="btn">All Posts</a>
+			</div><!-- column50 -->
+		</div><!-- column100 -->
+	</div><!-- wrapper-->
 </div><!-- wrapper-full-->

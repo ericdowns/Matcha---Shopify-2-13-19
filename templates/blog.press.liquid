@@ -1,48 +1,39 @@
-<!-- /templates/blog.liquid -->
-
-
-<div class="wrapper-full">
-<div class="wrapper">
-
-{% paginate blog.articles by 10 %}
-{% include 'breadcrumb' %}
-
-
-<div class="column100 section-blogwrapper">
-
-{% if current_tags %}
-<h1>{{ blog.title | link_to: blog.url }} &mdash; {{ current_tags.first }}</h1>
-{% else %}
-<h1>{{ blog.title }}</h1>
-{% endif %}
-
-
-{% for article in blog.articles %}
-<div class="article">
-<h3>{{ article.title }}</h3>
-<p class="date-title">{{ article.created_at | date: "%B %d, %Y" }} </p>
-<div class="rte">
-<p>{{ article.content }}</p>
-</div> 
-</div> <!-- article -->
-
-
-{% unless forloop.last %}<hr>{% endunless %}
-{% endfor %}
-
-{% if paginate.pages > 1 %}
-<hr>
-<div class="pagination">
-{{ paginate | default_pagination }}
+<div class="wrapper-full bg-image-team" style="background-image: url(https://cdn.shopify.com/s/files/1/1456/8506/files/press-hero.jpg?6349281784004452039)"/> 
+<div class="bg-image-team_textholder">  
+	<h2> Press</h2>
 </div>
-{% endif %}
-
-
-
-
-</div> <!-- column100 -->
-
-{% endpaginate %}
-
-</div><!-- wrapper-->
 </div><!-- wrapper-full-->
+<div class="wrapper-full">
+	<div class="wrapper">
+		{% paginate blog.articles by 10 %}
+		<div class="section-blogwrapper-press">
+			{% for article in blog.articles %}
+			<div class="article-press">
+				<div class="article-press_img">
+					{% if article.image %}
+					<a class="article-press_img-img" href="{{ article.url }}">
+						{{ article | img_url: '1024x1024' | img_tag: article.title }}
+					</a>
+					{% endif %}
+				</div> <!-- article-press_img -->
+				<div class="article-press_text">
+					<h3><a href="{{ article.url }}"> {{ article.title }}</a></h3>
+					<p class="date-title">{{ article.created_at | date: "%B %d, %Y" }} </p>
+					<div class="rte">
+
+						<p>{{ article.content | truncate: 500 }}</p>
+					</div> <!-- rte --> 
+				</div> <!-- article-press_text -->
+			</div> <!-- article -->
+			{% unless forloop.last %}<hr>{% endunless %}
+			{% endfor %}
+			{% if paginate.pages > 1 %}
+			<hr>
+			<div class="pagination">
+				{{ paginate | default_pagination }}
+			</div>
+			{% endif %}
+		</div> <!-- column100 -->
+		{% endpaginate %}
+	</div><!-- wrapper-->
+</div><!-- wrapper-full

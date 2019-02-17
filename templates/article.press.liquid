@@ -1,0 +1,26 @@
+<div class="wrapper-full">
+	<div class="wrapper">
+		<div class="section-article-wrapper-press">
+			
+
+			<article itemscope itemtype="http://schema.org/Article">
+
+				<header class="section-header">
+					<div class="section-pagetitle-article">
+						<h1>{{ article.title }}</h1>
+						<p class="date-title"> {{ article.author }} | {{ article.created_at | date: "%B %d, %Y" }} </p>
+					</div><!--section-header__left-->
+				</header>
+				
+				<div class="rte">
+					{% if article.image %}
+					<div class="featured-image"> {{ article | img_url: '1024x1024' | img_tag: article.title }}  </div>
+					{% endif %}
+					<div class="article-content">
+						{{ article.content }}
+					</div> <!-- article-content -->
+				</div> <!-- rte -->
+
+			</article>
+		</div><!-- wrapper-->
+	</div><!-- wrapper-full-->
