@@ -23,3 +23,25 @@
 		</div><!--section-team-member-wrapper-->
 	</div><!-- wrapper-->
 </div><!-- wrapper-full-->
+
+<div class="popup_overlay closed">
+	<div class="popup_content">
+		<iframe src="https://player.vimeo.com/video/196444458" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+		<span class="close_popup"></span>
+	</div> <!-- popup_content -->
+</div> <!-- popup_overlay closed -->
+<script>
+	$(function() {
+		console.log("Learn Page");
+		$(".video-popup").on( "click", function(event) {
+			event.preventDefault()
+			$( ".popup_overlay" ).toggleClass("open closed");
+		});
+		$(".popup_overlay").on( "click", function(event) {
+			$( ".popup_overlay" ).removeClass("open").addClass("closed");
+		});
+		$(".popup_overlay").on( "click", ".close_popup", function(event) {
+			$( ".popup_overlay" ).removeClass("open").addClass("closed");
+		});
+	});
+</script>
