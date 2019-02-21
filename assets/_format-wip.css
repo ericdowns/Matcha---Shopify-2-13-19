@@ -1,12 +1,5 @@
 /* @override 
-	https://raw.githack.com/ericdowns/Matcha---Shopify-2-13-19/master/assets/format_wip.css
-	https://raw.githack.com/ericdowns/Matcha---Shopify-2-13-19/master/assets/format-wip.css */
-
-* {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
+	https://raw.githack.com/ericdowns/Matcha---Shopify-2-13-19/master/assets/format_wip.css */
 a {
   transition: all .2s ease-in-out;
 }
@@ -2731,15 +2724,6 @@ label.quantity-selector {
 .section-collection-holder .grid__item p.h6 a {
   color: #333;
   font-size: 22px;
-  line-height: 1.25em;
-}
-
-
-
-@media screen and (max-width: 550px) {
-	.section-collection-holder .grid__item p.h6 a {
-	  font-size: 18px;
-	}
 }
 
 .section-collection-holder .grid__item p.h6 a:hover {
@@ -2747,9 +2731,9 @@ label.quantity-selector {
 }
 
 .section-collection-holder .grid__item p.price {
-  font-size: 12px;
+  font-size: 13px;
   font-family: montserrat,sans-serif;
-  font-weight: 600;
+  font-weight: 400;
   text-transform: uppercase;
   letter-spacing: .1em;
   color: #81ac68;
@@ -2892,7 +2876,7 @@ body#accessories.template-collection .section-collections-list li.accessories a 
 h3.category-headings {
   font-size: 13px;
   font-family: montserrat,sans-serif;
-  font-weight: 600;
+  font-weight: 400;
   text-transform: uppercase;
   letter-spacing: .1em;
   color: #81ac68;
@@ -4469,147 +4453,4 @@ body .mp-bar-text {
 
 .article-press_text h3 a:hover {
   color: #80B966;
-}
-
-/*Membership*/
-
-.bg-image-membership {
-  background-size: cover;
-  background-position: 0 top;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  margin-right: auto;
-	margin-left: auto;
-  max-width: 1800px;
-  min-height: 50vh;
-  position: relative;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  align-content: flex-start;
-  background-repeat: no-repeat;
-  padding-left: 3%;
-	padding-right: 3%;
-  margin-bottom: 60px;
-}
-
-.bg-image-membership:before {
-  z-index: 0;
-  content: "";
-  position: absolute;
-  background: rgba(55, 52, 54, 0);
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-}
-
-.bg-image-membership_textholder {
-  z-index: 99999;
-  display: flex;
-  width: 40%;
-  position: relative;
-  text-align: left;
-  display: flex;
-  flex-direction: column;
-  align-content: flex-start;
-  align-items: flex-start;
-outline: 1px solid red;
-}
-
-.bg-image-membership_textholder h2 {
-  text-align: left;
-  font-size: 40px;
-  line-height: 1;
-  margin: 0 0 20px;
-}
-
-
-.bg-image-membership_textholder p {
-color: #474747;
-}
-
-
-.section-membership-collection-holder {
-	max-width: 1100px;
-	margin-right: auto;
-	margin-left: auto;
-	padding-bottom: 120px;
-}
-
-.section-membership-collection-holder.grid-uniform {
-	max-width: 1100px;
-	margin-right: auto!important;
-	margin-left: auto!!important;
-}
-
-.section-membership-benefits-holder {
-	max-width: 1100px;
-	margin-right: auto !important;
-	margin-left: auto !important;
-	padding-bottom: 30px;
-	min-height: 20vh;
-border-bottom: 1px solid #D3D3D3;
-display: flex;
-	justify-content: space-between;
-	flex-wrap: wrap;
-margin-bottom: 60px;
-}
-
-
-@media screen and (max-width: 950px) {
-	.section-membership-benefits-holder {
-flex-wrap: wrap;	
-max-width: 400px;
-}
-}
-
-
-.section-membership-item {
-	flex-basis: 30%;
-	text-align: center;
-}
-
-@media screen and (max-width: 950px) {
-.section-membership-item {
-	flex-basis: 100%;
-}
-}
-
-
-
-.section-title-center {
-	flex-basis: 100%;
-	padding-bottom: 40px;
-	text-align: center;
-}
-
-.section-membership-item_img{
-max-width: 110px;
-margin-right: auto;
-	margin-left: auto;
-margin-bottom: 20px;
-}
-
-.section-membership-item_img img {
-display: block;
-}
-
-
-.section-membership-faqs {
-	max-width: 1100px;
-	margin-right: auto;
-	margin-left: auto;
-	padding-bottom: 60px;
-}
-
-.faq-item {
-	margin-bottom: 40px;
-}
-
-.max-width-1100 {
-max-width: 1100px;
-margin-right: auto;
-	margin-left: auto;
 }
