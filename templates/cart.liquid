@@ -1,3 +1,4 @@
+{% include 'subscription-cart-footer' %}
 <div class="wrapper-full">
 <div class="wrapper">
 <div class="column100 section-shopping-cart">
@@ -58,7 +59,7 @@
               {% assign property_size = item.properties | size %}
               {% if property_size > 0 %}
                 {% for p in item.properties %}
-                  {% unless p.last == blank %}
+                  {% unless p.last == blank or p.first == "subscription_id" or p.first == "shipping_interval_frequency" or p.first == "shipping_interval_unit_type" %}
                     {{ p.first }}:
 
                     {% comment %}
@@ -133,8 +134,12 @@
      
 
 {% if additional_checkout_buttons %}
+<span class="additional-checkout-buttons">
+
           <div class="additional_checkout_buttons">{{ content_for_additional_checkout_buttons }}</div>
-      {% endif %}
+      
+</span>
+{% endif %}
 
  </div>
     </div>

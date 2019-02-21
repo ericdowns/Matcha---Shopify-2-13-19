@@ -1,0 +1,89 @@
+
+<div class="wrapper-full bg-image-membership" style="background-image: url(https://cdn.shopify.com/s/files/1/1456/8506/files/membership-hero.jpg?15409474422188825983)"/> 
+<div class="bg-image-membership_textholder">  
+	<h2>The Matcha Membership </h2>
+	<p>Delivering the world's best matcha to your door so that you can properly fuel your hustle and save some green.</p>
+	<a href="" class="btn">Sign me up</a>
+	<a href="" class="btn">Log in</a>
+</div> <!-- bg-image-team_textholder -->
+</div><!-- wrapper-full-->
+
+
+<div class="wrapper-full">
+	<div class="wrapper">
+		<div class="section-membership-benefits-holder">
+			<div class="section-title-center">
+				<h2>Enjoy Matcha Member Benefits</h2>
+			</div>
+			<div class="section-membership-item">
+				<div class="section-membership-item_img">
+					<img src="https://cdn.shopify.com/s/files/1/1456/8506/files/icon_membership-ritual.svg?1830270989061791185">
+				</div>
+				<h3>Start a Daily Ritual</h3>
+				<p>Your mind and body will thank you. Matcha offers tons of healthy benefits and provides a daily dose of ass-kickery. Samurai drank it everyday and so should you.</p>
+			</div> <!-- section-membership-item -->
+			<div class="section-membership-item">
+				<div class="section-membership-item_img">
+					<img src="https://cdn.shopify.com/s/files/1/1456/8506/files/icon_membership-your-way.svg?1830270989061791185" alt="">
+				</div>
+				<h3>Matcha Your Way</h3>
+				<p>Mix and match the matcha products you’d like to receive, pick how often you’d like your order to come, and then forget about it.</p>
+			</div> <!-- section-membership-item -->
+			<div class="section-membership-item">
+				<div class="section-membership-item_img">
+					<img src="https://cdn.shopify.com/s/files/1/1456/8506/files/icon_membership-saving.svg?1830270989061791185">
+				</div>
+				<h3>Saving in the Process</h3>
+				<p>Subscribers receive 10% off all subscription products.</p>
+			</div> <!-- section-membership-item -->
+		</div><!--section-membership-benefits-holder-->
+	</div><!-- wrapper-full-->
+</div><!-- wrapper-full-->
+
+<div class="wrapper">
+	<div class="section-collection-holder max-width-1100">
+		<div class="section-title-center">
+			<h2>Make Your Matcha Mix</h2>
+		</div>
+		<div class="grid-uniform">
+			{% for product in collections.tea.products %}
+			{% include 'product-grid-item' %}
+			{% endfor %}
+		</div> <!-- grid-uniform -->
+	</div><!-- wrapper-full-->
+
+
+
+	<div class="wrapper-full">
+		<div class="wrapper">
+			<div class="section-membership-faqs">
+				<div class="section-title-center">
+					<h2>FAQ</h2>
+				</div>
+				<div class="faq-item">
+					<h3>Do all orders receive 10% off?</h3>
+					<p>All subscription orders qualify for 10% off. We do not have a minimum frequency or order size. (If you cancel before you’ve received three shipments, you will be charged the full purchase price for all items.)</p>
+				</div>
+				<div class="faq-item">
+					<h3>Can I change the products or frequency before I’ve received my three shipments?</h3>
+					<p>This is about your personal matcha mix. You can change your subscription as much as you wish. Sign into your account to make product or frequency changes.</p>
+				</div>
+				<div class="faq-item">
+					<h3>Will I be charged a fee if I change my subscription before I’ve received my three shipments?</h3>
+					<p>Again, this is about your personal matcha mix. You can change your subscription as much as you wish. We will not charge you for changing needs. Sign into your account to make product or frequency changes.</p>
+				</div>
+				<div class="faq-item">
+					<h3>Is there a fee to sign up for a subscription?</h3>
+					<p>No, there are no sign up fees. The only charges you will receive are for the products themselves.</p>
+				</div>
+				<div class="faq-item">
+					<h3>Can I get a MatchaKari subscription if I live outside of the U.S.?</h3>
+					<p>At this time, subscription services are for U.S. residents only.</p>
+				</div>
+				<div class="faq-item">
+					<h3>Are all products available for the subscription program?</h3>
+					<p>Yes, you can order any MatchaKari product through our subscription program.</p>
+				</div>
+			</div>
+		</div>
+	</div>

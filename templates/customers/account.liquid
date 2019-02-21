@@ -77,7 +77,12 @@
 
     <h4>{{ 'customer.account.details' | t }}</h4>
 
-    <h5>{{ customer.name }}</h5>
+    <h5>{{ customer.name }}<!-- Begin ReCharge code -->
+{% if customer.metafields.subscriptions.customer_string %}
+    <p><a href="/tools/recurring/customers/{{ customer.metafields.subscriptions.customer_string }}/subscriptions/">Manage Subscriptions</a></p>
+{% endif %}
+<!-- End ReCharge code -->
+</h5>
 
     {% if customer.default_address != nil %}
       <p>

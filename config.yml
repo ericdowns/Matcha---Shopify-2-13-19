@@ -1,6 +1,6 @@
 development:
   password: 1a3da333208d99c9b0cacfe63f9036d4
-  theme_id: "44218876017"
+  theme_id: "44246499441"
   store: matcha-8.myshopify.com
   ignore_files:
     - config/settings_data.json
