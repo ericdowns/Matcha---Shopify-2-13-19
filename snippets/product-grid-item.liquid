@@ -56,6 +56,9 @@
       {% endif %}
     </p>
 
+    {% if page.handle == "membership" %}
+    <a href="{{ product.url | within: collection }}" class="btn">Subscribe</a>
+    {% endif %}
 
 
   </div> <!-- grid__item -->

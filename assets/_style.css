@@ -1,5 +1,6 @@
 /* @override 
-https://raw.githack.com/ericdowns/Matcha---Shopify-2-13-19/master/assets/style.css */
+	https://cdn.shopify.com/s/files/1/1456/8506/t/17/assets/style.css?4295405402415161803 */
+
 @font-face {
   font-family: 'icons';
   src: url("//rawcdn.githack.com/ericdowns/matcha-files/a2cd0abd51cb968e20c24aad94459f238ba50922/icons.eot");
@@ -106,7 +107,6 @@ input[type="search"]::-webkit-search-decoration {
   width: 100%;
   /* outline: 1px solid pink;
   */
-  margin-bottom: 3%;
 }
 
 .grid--rev {
@@ -2068,7 +2068,7 @@ html input[disabled] {
   -webkit-appearance: none;
   -moz-appearance: none;
   border-radius: 0px;
-  background-color: #61B049;
+  background-color: #80b966;
   color: #fff;
   font: 12px 'Montserrat', sans-serif;
   text-transform: uppercase;
@@ -2158,78 +2158,6 @@ a.btn:hover {
   background: none;
   padding: 0;
   margin: 0;
-}
-
-.btn-ourtline-transparent {
-  display: inline-block;
-  padding: 0 20px;
-  min-width: 180px;
-  width: auto;
-  margin: 0 10px 5px 0;
-  min-width: 180px;
-  height: 50px;
-  line-height: 48px !important;
-  font-weight: normal;
-  text-decoration: none;
-  text-align: center;
-  vertical-align: middle;
-  white-space: nowrap;
-  cursor: pointer;
-  border: 1px solid #3E3E3E;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  border-radius: 0px;
-  background-color: transparent;
-  color: #3E3E3E;
-  font: 12px 'Montserrat', sans-serif;
-  text-transform: uppercase;
-  letter-spacing: .1em;
-  transition: all 0.2s ease-in-out;
-}
-
-.btn-ourtline-transparent:hover {
-  border: 1px solid #3E3E3E;
-  background-color: #3E3E3E;
-  color: #fff;
-}
-
-.btn-red {
-  display: inline-block;
-  padding: 0 20px;
-  min-width: 180px;
-  height: 50px;
-  line-height: 48px !important;
-  margin: 0 10px 5px 0;
-  font-weight: normal;
-  text-decoration: none;
-  text-align: center;
-  vertical-align: middle;
-  white-space: nowrap;
-  cursor: pointer;
-  border: 1px solid #F34D54;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  border-radius: 0px;
-  background-color: #F34D54;
-  color: #fff;
-  font: 12px 'Montserrat', sans-serif;
-  text-transform: uppercase;
-  letter-spacing: .1em;
-  transition: all 0.2s ease-in-out;
-}
-
-.btn-red:hover {
-  border: 1px solid #F34D54;
-  background-color: #E9E9E9;
-  color: #F34D54;
 }
 
 ul,
