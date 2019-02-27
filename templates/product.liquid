@@ -11,25 +11,18 @@
 		<div itemscope itemtype="http://schema.org/Product">
 			<meta itemprop="url" content="{{ shop.url }}{{ product.url }}">
 			<meta itemprop="image" content="{{ product.featured_image.src | img_url: 'grande' }}">
-
 			{% assign current_variant = product.selected_or_first_available_variant %}
-
 			{% include 'breadcrumb' %}
-
 
 
 			<div class="grid product-single">
 				<div class="grid__item large--one-half text-center section-product-imgs">
-
-
 					<div class="product-single__photos" id="ProductPhoto">
 						{% assign featured_image = current_variant.featured_image | default: product.featured_image %}
 						<img src="{{ featured_image | img_url: 'master' }}" alt="{{ featured_image.alt | escape }}" id="ProductPhotoImg">
 					</div>
-
 					{% if product.images.size > 1 %}
 					<ul class="product-single__thumbnails grid-uniform" id="ProductThumbs">
-
 						{% for image in product.images %}
 						<li class="grid__item one-quarter">
 							<a href="{{ image.src | img_url: 'master' }}" class="product-single__thumbnail">
@@ -41,22 +34,16 @@
 					{% endif %}
 				</div> <!-- grid__item large-0one-half -->
 
-
 				<div class="grid__item large--one-half section-product-info">
-
 					<h1 itemprop="name" class="product-title">{{ product.title }}</h1>
-
 					<!-- Metafield » Available  -->
 					{% if product.metafields.productsingle.available %}
 					<p class="availablity">{{ productsingle.available}}</p>
 					{% endif %}
-
 					<!-- Metafield » Small Description  -->
 					{% if product.metafields.productsingle.smalldescription %}
 					<p class="small-description">{{ productsingle.smalldescription}}</p>
 					{% endif %}
-
-
 					<div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
 						<meta itemprop="priceCurrency" content="{{ shop.currency }}">
 						<link itemprop="availability" href="http://schema.org/{% if product.available %}InStock{% else %}OutOfStock{% endif %}">
@@ -64,14 +51,10 @@
 							<!-- Begin ReCharge code -->
 							{% if product.available %}{% include 'subscription-product' %}{% endif %}
 							<!-- End ReCharge code -->
-
-
 							<select name="id" data-productid="{{ product.id }}" id="productSelect" class="product-single__variants">
 								{% for variant in product.variants %}
 								{% if variant.available %}
-
 								<option {% if variant == product.selected_or_first_available_variant %} selected="selected" {% endif %} data-sku="{{ variant.sku }}" value="{{ variant.id }}">{{ variant.title }} - {{ variant.price | money_with_currency }}</option>
-
 								{% else %}
 								<option disabled="disabled">
 									{{ variant.title }} - {{ 'products.product.sold_out' | t }}
@@ -79,29 +62,23 @@
 								{% endif %}
 								{% endfor %}
 							</select>
-
 							<span class="visually-hidden">{{ 'products.general.regular_price' | t }}</span>
 							<span id="ProductPrice" class="h2" itemprop="price" content="{{ current_variant.price | divided_by: 100 }}">
 								{{ current_variant.price | money }}
 							</span>
-
 							{% if product.compare_at_price_max > product.price %}
 							<span class="visually-hidden">{{ 'products.general.sale_price' | t }}</span>
 							<p id="ComparePrice">
 								{{ 'products.product.compare_at' | t }} {{ current_variant.compare_at_price | money }}
 							</p>
 							{% endif %}
-
 							<label for="Quantity" class="quantity-selector">{{ 'products.product.quantity' | t }}</label>
 							<input type="number" id="Quantity" name="quantity" value="1" min="1" class="quantity-selector">
-
 							<button type="submit" name="add" id="AddToCart" class="btn addToCart">
 								<span id="AddToCartText">{{ 'products.product.add_to_cart' | t }}</span>
 							</button>
 						</form>
-
 						{% include 'shipping-schema' %}
-
 					</div>
 				</div> <!-- grid__item large--one-half -->
 			</div> <!-- grid product-single -->
@@ -113,11 +90,9 @@
 					<div class="wrapper-full section-countdown-timmer">
 						<div id="pxu_cst"></div>
 					</div><!-- wrapper-full-->
-
 					<div class="column50 colleft">
 						<div class="metafields">{{ product.description }}</div>
 					</div> <!-- column50 -->
-
 					<div class="column50 colright">
 						{% if product.metafields.productsingle.flavorprofile %}
 						<div class="metafields">
@@ -127,8 +102,6 @@
 							</div> <!-- text-wrapper -->
 						</div><!-- metafields -->
 						{% endif %}
-
-
 						{% if product.metafields.productsingle.caffeinelevel %}
 						<div class="metafields">
 							<img src="https://cdn.shopify.com/s/files/1/1456/8506/files/icon-caffeine.png?18388811151338778103" class="productprofile-img"/>  
@@ -137,8 +110,6 @@
 							</div> <!-- text-wrapper -->
 						</div><!-- metafields -->
 						{% endif %}
-
-
 						{% if product.metafields.productsingle.harvested %}
 						<div class="metafields">
 							<img src="https://cdn.shopify.com/s/files/1/1456/8506/files/icon_japan.png?18388811151338778103" class="productprofile-img"/>  
@@ -148,7 +119,6 @@
 						</div><!-- metafields -->
 						{% endif %}
 					</div> <!-- column50 -->
-
 					<hr class="hr--nobottommargin">
 				</div> <!-- column100 -->
 			</div> <!-- product-description -->

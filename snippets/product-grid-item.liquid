@@ -1,64 +1,79 @@
-  {% unless grid_item_width %}
-  {% assign grid_item_width = 'large--one-third medium--one-half small--one-half' %}
-  {% endunless %}
-
-  {% assign on_sale = false %}
-  {% if product.compare_at_price > product.price %}
-  {% assign on_sale = true %}
-  {% endif %}
-
-  {% assign sold_out = true %}
-  {% if product.available %}
-  {% assign sold_out = false %}
-  {% endif %}
-
-  <div class="grid__item has-new-tag {{ grid_item_width }}">
-
-    <div class="new-tag">
-      {% for mytag in product.tags %}{% if mytag == 'new' %}
-      <p>NEW</p> 
-      {% endif %}
-      {% endfor %}
-    </div><!-- new-tag -->
-
-    <a href="{{ product.url | within: collection }}" class="grid__image">
-      <img src="{{ product.featured_image.src | img_url: 'large' }}" alt="{{ product.featured_image.alt | escape }}">
-    </a>
-
-    <p class="h6">
-      <a href="{{ product.url | within: collection }}">{{ product.title }}</a>
-    </p>
+{% assign productsingle = product.metafields.productsingle %}
+{% assign key = 'subscriptiondiscount' %}
 
 
-    <p class="price">
-      {% if on_sale %}
-      {% if product.price_varies %}
-      {% assign sale_price = product.price | money %}
-      {{ 'products.product.on_sale_from_html' | t: price: sale_price }}
-      {% else %}
-      <strong>{{ 'products.product.on_sale' | t }}</strong>
-      {{ product.price | money }}
-      {% endif %}
-      {% else %}
-      {% if product.price_varies %}
-      {% assign price = product.price | money %}
-      {{ 'products.general.from_text_html' | t: price: price }}
-      {% else %}
-      {{ product.price | money }}
-      {% endif %}
-      {% endif %}
-      {% if sold_out %}
-      <br><strong>{{ 'products.product.sold_out' | t }}</strong>
-      {% endif %}
-      {% if on_sale %}
-      <span class="visually-hidden">{{ 'products.general.regular_price' | t }}</span>
-      <br><s>{{ product.compare_at_price | money }}</s>
-      {% endif %}
-    </p>
 
-    {% if page.handle == "membership" %}
-    <a href="{{ product.url | within: collection }}" class="btn">Subscribe</a>
+{% unless grid_item_width %}
+{% assign grid_item_width = 'large--one-third medium--one-half small--one-half' %}
+{% endunless %}
+
+{% assign on_sale = false %}
+{% if product.compare_at_price > product.price %}
+{% assign on_sale = true %}
+{% endif %}
+
+{% assign sold_out = true %}
+{% if product.available %}
+{% assign sold_out = false %}
+{% endif %}
+
+<div class="grid__item has-new-tag {{ grid_item_width }}">
+
+  <div class="new-tag">
+    {% for mytag in product.tags %}{% if mytag == 'new' %}
+    <p>NEW</p> 
     {% endif %}
+    {% endfor %}
+  </div><!-- new-tag -->
+
+  <a href="{{ product.url | within: collection }}" class="grid__image">
+    <img src="{{ product.featured_image.src | img_url: 'large' }}" alt="{{ product.featured_image.alt | escape }}">
+  </a>
+
+  <p class="h6">
+    <a href="{{ product.url | within: collection }}">{{ product.title }}</a>
+  </p>
+
+  <p class="price">
+
+    {% if on_sale %}
+    
+    {% if product.price_varies %}
+    {% assign sale_price = product.price | money %}
+    {{ 'products.product.on_sale_from_html' | t: price: sale_price }}
+    {% else %}
+    <strong>{{ 'products.product.on_sale' | t }}</strong>
+    {{ product.price | money }}
+    {% endif %}
+    
+    {% else %}
+    {% if product.price_varies %}
+    {% assign price = product.price | money %}
+    {{ 'products.general.from_text_html' | t: price: price }}
+    {% else %}
+    {{ product.price | money }}
+    {% endif %}
+    {% endif %}
+    
+    {% if sold_out %}
+    <br><strong>{{ 'products.product.sold_out' | t }}</strong>
+    {% endif %}
+    {% if on_sale %}
+    <span class="visually-hidden">{{ 'products.general.regular_price' | t }}</span>
+    <br><s>{{ product.compare_at_price | money }}</s>
+    {% endif %}
+
+  </p>
+
+  {% if page.handle == "membership" %}
+  {{ product.price | money }}
+  <span class="from"> From {{ productsingle.subscriptiondiscount}}</span> 
+  {% endif %}
+
+
+  {% if page.handle == "membership" %}
+  <a href="{{ product.url | within: collection }}" class="btn">Subscribe</a>
+  {% endif %}
 
 
   </div> <!-- grid__item -->

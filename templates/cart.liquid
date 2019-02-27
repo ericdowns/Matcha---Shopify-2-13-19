@@ -1,3 +1,5 @@
+
+
 {% include 'subscription-cart-footer' %}
 <div class="wrapper-full">
   <div class="wrapper">
@@ -12,21 +14,26 @@
       Check to see if item in cart is subscription 
       --------------------------------------------------------------------------------------------------
       {% endcomment %}
-      
+
+
       {% for item in cart.items %}
-      <td>
-        {% for collection in item.product.collections %}
-        {% if collection.handle == "subscription" %}
-        <p>
+      {% if item.product.type == 'Tea Subscription' %}
+      {% if forloop.first %}
+      <div class="cart-subscription-wrapper">
+        <p class="hey-there">Hey There, Matcha Lover. <br>
+        We see you have a membership item in your cart.</p>
+        <h2>Membership Details</h2>
+        <p>We require a <strong>3-shipment minimum</strong> - swap, skip, add, or remove at any time. <br>
+        This ensures we can give you our best price and means you get to fully experience the benefits of daily matcha.</p>
+        <div class="cart-subscription-wrapper_label-wrapper">
           <input style="float:none; vertical-align: middle;" type="checkbox" id="agree" />
-          <label style="display:inline; float:none" for="agree">
-            I agree with the <a href="/pages/terms-and-conditions">terms and conditions</a>.
-          </label>
-        </p>
-        {% endif %}
-        {% endfor %}
-      </td>
+          <label style="display:inline; float:none" for="agree"> I Understand</label>
+        </div>
+      </div> <!-- cart-subscription-wrapper -->      
+      {% endif %}
+      {% endif %}
       {% endfor %}
+
 
 
       <form action="/cart" method="post" novalidate class="cart table-wrap">

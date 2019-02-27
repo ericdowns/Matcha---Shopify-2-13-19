@@ -284,23 +284,25 @@ https://help.shopify.com/themes/customization/cart/add-terms-and-conditions-chec
 --------------------------------------------------------------------------------------------------
 {% endcomment %}
 
+
 {% for item in cart.items %}
-{% for collection in item.product.collections %}
-{% if collection.handle == "subscription" %}
+{% if item.product.type == 'Tea Subscription' %}
+{% if forloop.first %}
 <script>
 	$('body').on('click', '[name="checkout"], [name="goto_pp"], [name="goto_gc"]', function() {
 		if ($('#agree').is(':checked')) {
 			$(this).submit();
 		}
 		else {
-			alert("You must agree with the terms and conditions of sales to check out.");
+			alert("To checkout, you must agree with the subscription terms.");
 			return false;
 		}
 	});
 </script>
 {% endif %}
+{% endif %}
 {% endfor %}
-{% endfor %}
+
 
 
 
