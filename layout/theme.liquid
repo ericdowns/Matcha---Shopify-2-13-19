@@ -39,16 +39,12 @@
 	{% endcomment %}
 
 	<link rel="stylesheet" type="text/css" href="https://raw.githack.com/ericdowns/Matcha---Shopify-2-13-19/master/assets/style.css">
-	<link rel="stylesheet" type="text/css" href="https://raw.githack.com/ericdowns/Matcha---Shopify-2-13-19/49d4f22b75ebc2eeb9fd6c151fd7a7f923e60fc9/assets/format-wip.css">
+	<link rel="stylesheet" type="text/css" href="https://raw.githack.com/ericdowns/Matcha---Shopify-2-13-19/master/assets/format-wip.css">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-
 	{{ '//fonts.googleapis.com/css?family=Playfair+Display:400,400i,700,700i' | stylesheet_tag }}
 	{{ '//fonts.googleapis.com/css?family=Crimson+Text:400,400i,600,600i,700,700i' | stylesheet_tag }}  
 	{{ '//fonts.googleapis.com/css?family=Pathway+Gothic+One' | stylesheet_tag }}
 	{{ '//fonts.googleapis.com/css?family=Montserrat:400,500,600,700' | stylesheet_tag }}
-
-
-
 
 	<!-- Header hook for plugins ================================================== -->
 	{{ content_for_header }}
@@ -70,6 +66,25 @@
 </head>
 
 <body id="{{ page_title | handle }}" class="{% if customer %}customer-logged-in {% endif %}template-{{ template | replace: '.', ' ' | truncatewords: 1, '' | handle }}" >
+
+	{% if template contains 'membership' %}
+	<div class="membership-header-bar">
+		<div class="membership-header-bar-inner">
+			
+			<div class="membership-subscribe">
+				<p>Subscribe to 3 items, get 10% Off <a href="/" class="header-btn">Shop Now</a></p>
+			</div> <!-- membership-subscribe -->
+
+			<div class="membership-refer">
+				<p>Refer a Friend and get $10 <a href="/" class="header-btn">Get Started</a></p>
+			</div> <!-- membership-subscribe -->
+
+
+		</div> <!-- membership-header-bar-inner -->
+	</div> <!-- membership-header-bar -->
+	{% endif %}
+
+
 	<div class="msgOverlay">
 		<div class="msgText">
 			<h5 id="msg"></h5> 
@@ -283,8 +298,6 @@ Code on the outside of script is to verify that the content in the cart is a sub
 https://help.shopify.com/themes/customization/cart/add-terms-and-conditions-checkbox#add-the-checkbox-to-the-cart-page
 --------------------------------------------------------------------------------------------------
 {% endcomment %}
-
-
 {% for item in cart.items %}
 {% if item.product.type == 'Tea Subscription' %}
 {% if forloop.first %}
