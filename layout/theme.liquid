@@ -6,10 +6,7 @@
 	<script type="text/javascript">
 		(function e(){var e=document.createElement("script");e.type="text/javascript",e.async=true,e.src="//staticw2.yotpo.com/1D6J3JNFBayTYLntWkuuOcM7fuwSDSPlobBebVF9/widget.js";var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t)})();
 	</script>
-
 	<meta name="google-site-verification" content="hzXZdGe3kTTIXdviBUY7T12VT7ZQzE_0EN86uKIKDqc" />
-
-	<!-- Basic page needs ================================================== -->
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
@@ -21,23 +18,19 @@
 	<title>
 		{{ page_title }}{% if current_tags %}{% assign meta_tags = current_tags | join: ', ' %} &ndash; {{ 'general.meta.tags' | t: tags: meta_tags }}{% endif %}{% if current_page != 1 %} &ndash; {{ 'general.meta.page' | t: page: current_page }}{% endif %}{% unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless %}
 	</title>
-
 	{% if page_description %}
 	<meta name="description" content="{{ page_description | escape }}">
 	{% endif %}
-
 	<!-- Helpers ================================================== -->
 	{% include 'social-meta-tags' %}
 	<link rel="canonical" href="{{ canonical_url }}">
 	<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
 	<meta name="theme-color" content="{{ settings.color_primary }}">
-
 	{% comment %}
 	https://raw.githack.com//
 	{{ 'style.css' | asset_url | stylesheet_tag }}
 	{{ 'format.css' | asset_url | stylesheet_tag }}
 	{% endcomment %}
-
 	<link rel="stylesheet" type="text/css" href="https://raw.githack.com/ericdowns/Matcha---Shopify-2-13-19/master/assets/style-1.css">
 	<link rel="stylesheet" type="text/css" href="https://raw.githack.com/ericdowns/Matcha---Shopify-2-13-19/master/assets/format-wip-1.css">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
@@ -67,18 +60,10 @@
 
 <body id="{{ page_title | handle }}" class="{% if customer %}customer-logged-in {% endif %}template-{{ template | replace: '.', ' ' | truncatewords: 1, '' | handle }}" >
 
-	{% if template contains 'membership' %}
-	<div class="membership-header-bar">
-		<div class="membership-header-bar-inner">
-			<div class="membership-subscribe">
-				<p>Subscribe to 3 items, get 10% Off <a href="/" class="header-btn">Shop Now</a></p>
-			</div> <!-- membership-subscribe -->
-			<div class="membership-refer">
-				<p>Refer a Friend and get $10 <a href="/" class="header-btn">Get Started</a></p>
-			</div> <!-- membership-subscribe -->
-		</div> <!-- membership-header-bar-inner -->
-	</div> <!-- membership-header-bar -->
+	{% if page.handle == 'membership' or template == 'index' %}
+	{% include 'membership-header' %}
 	{% endif %}
+
 
 
 	<div class="msgOverlay">
@@ -101,7 +86,6 @@
 				</button>
 			</div>
 		</div>
-
 		{% include 'mobile-nav' %}
 	</div><!-- NavDrawer -->
 	<!-- END » Left Side Mobile Menu ================================================== -->
@@ -163,7 +147,7 @@
 		{% endif %}
 
 		<nav class="nav-bar-new" role="navigation">
-			<div class="wrapper">
+			<div class="wrapper header-wrapper">
 				<div class="medium-down--hide">
 					<ul class="site-nav-new" id="AccessibleNav">
 						<div class="navmenu-lefthalf">
@@ -178,7 +162,8 @@
 									<a href="/" itemprop="url">{{ 'logo.png' | asset_url | img_tag }}</a></span></li>
 								</div><!-- navmenu-logoholder -->
 								<div class="navmenu-righthalf">
-									<li class="nav-item wholesale"><a href="/pages/matcha-wholesale">Wholesale</a></li> 
+									<li class="nav-item"><a href="/pages/membership">Subscribe + Save</a></li> 
+									<li class="nav-item"><a href="/pages/refer-a-friend">Get $10</a></li> 									
 									<li class="nav-item login">
 										{% if customer %}
 										{{ 'layout.customer.log_out' | t | customer_logout_link }}
@@ -186,10 +171,10 @@
 										{{ 'layout.customer.log_in' | t | customer_login_link }}
 										{% endif %}
 									</li>
-									<li class="nav-item search"><a href="/search"><span class="icon">{{ 'icon-search.svg' | asset_url | img_tag }}</span>Search</a></li>
+									<li class="nav-item search"><a href="/search"><span class="icon">{{ 'icon-search.svg' | asset_url | img_tag }}</span></a></li>
 									<li class="nav-item cart"><a href="/cart" class="site-header__cart-toggle js-drawer-open-right" aria-controls="CartDrawer" aria-expanded="false">
 										<span class="icon">{{ 'icon-cart.svg' | asset_url | img_tag }}</span> 
-										My Cart <span id="CartCount">({{ cart.item_count  }})</span>
+										<span id="CartCount">({{ cart.item_count  }})</span>
 									</a></li>
 								</div><!-- navmenu-lefthalf -->
 							</ul> <!-- AccessibleNav -->
@@ -234,8 +219,6 @@
 
 			{{ 'fastclick.min.js' | asset_url | script_tag }}
 			{{ 'timber.js' | asset_url | script_tag }}
-
-
 			{% comment %}
 			Template-specific js
 			{% endcomment %}

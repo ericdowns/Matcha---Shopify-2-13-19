@@ -1,13 +1,14 @@
     <ul class="mobile-nav">
+
+      {% comment %}
       <li class="mobile-nav__item mobile-nav__search">
         {% include 'search-bar' %}
       </li>
-      {% for link in linklists.main-menu-new.links %}
-      {% comment %}
-      Create a dropdown menu by naming a linklist the same as a link in the parent nav
-      More info on dropdowns:
-      - http://docs.shopify.com/manual/your-website/navigation/create-drop-down-menu
       {% endcomment %}
+
+
+
+      {% for link in linklists.main-menu-new.links %}
       {% assign child_list_handle = link.title | handleize %}
       {% if linklists[child_list_handle].links != blank %}
       <li class="mobile-nav__item{% if link.active %} mobile-nav__item--active{% endif %}" aria-haspopup="true">
@@ -58,9 +59,17 @@
       <li class="mobile-nav__item">
         {{ 'layout.customer.log_in' | t | customer_login_link }}
       </li>
+
+
+      {% comment %}
       <li class="mobile-nav__item">
         {{ 'layout.customer.create_account' | t | customer_register_link }}
       </li>
+      {% endcomment %}
+
+
+
+
       {% endif %}
       {% endif %}
     </ul>
