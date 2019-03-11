@@ -6,7 +6,7 @@
 {% endunless %}
 
 
-<div class="grid__item has-new-tag {{ grid_item_width }}">
+<div class="grid__item grid-item-subscribe {{ grid_item_width }}">
   <a href="{{ product.url | within: collection }}" class="grid__image">
     <img src="{{ product.featured_image.src | img_url: 'large' }}" alt="{{ product.featured_image.alt | escape }}">
   </a>
@@ -22,6 +22,6 @@
   </p>
 
 
-  <a href="{{ product.url | within: collection }}" class="btn">Subscribe</a>
+  <a href="{{ product.url | within: collection }}" class="btn subscribe-btn">Subscribe</a>
 
   </div> <!-- grid__item -->

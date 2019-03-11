@@ -48,41 +48,50 @@
 						<meta itemprop="priceCurrency" content="{{ shop.currency }}">
 						<link itemprop="availability" href="http://schema.org/{% if product.available %}InStock{% else %}OutOfStock{% endif %}">
 						<form action="/cart/add" data-productid="{{ product.id }}" method="post" enctype="multipart/form-data" id="AddToCartForm" class="form-vertical">
+							
 							<!-- Begin ReCharge code -->
-							{% if product.available %}{% include 'subscription-product' %}{% endif %}
-							<!-- End ReCharge code -->
-							<select name="id" data-productid="{{ product.id }}" id="productSelect" class="product-single__variants">
-								{% for variant in product.variants %}
-								{% if variant.available %}
-								<option {% if variant == product.selected_or_first_available_variant %} selected="selected" {% endif %} data-sku="{{ variant.sku }}" value="{{ variant.id }}">{{ variant.title }} - {{ variant.price | money_with_currency }}</option>
-								{% else %}
-								<option disabled="disabled">
-									{{ variant.title }} - {{ 'products.product.sold_out' | t }}
-								</option>
+							{% if product.available %}
+							{% include 'subscription-product' %}
+							<div class="subscription-product-wrapper">
 								{% endif %}
-								{% endfor %}
-							</select>
-							<span class="visually-hidden">{{ 'products.general.regular_price' | t }}</span>
-							<span id="ProductPrice" class="h2" itemprop="price" content="{{ current_variant.price | divided_by: 100 }}">
-								{{ current_variant.price | money }}
-							</span>
-							{% if product.compare_at_price_max > product.price %}
-							<span class="visually-hidden">{{ 'products.general.sale_price' | t }}</span>
-							<p id="ComparePrice">
-								{{ 'products.product.compare_at' | t }} {{ current_variant.compare_at_price | money }}
-							</p>
-							{% endif %}
-							<label for="Quantity" class="quantity-selector">{{ 'products.product.quantity' | t }}</label>
-							<input type="number" id="Quantity" name="quantity" value="1" min="1" class="quantity-selector">
-							<button type="submit" name="add" id="AddToCart" class="btn addToCart">
-								<span id="AddToCartText">{{ 'products.product.add_to_cart' | t }}</span>
-							</button>
-						</form>
-						{% include 'shipping-schema' %}
-					</div>
-				</div> <!-- grid__item large--one-half -->
-			</div> <!-- grid product-single -->
 
+								<!-- End ReCharge code -->
+								<select name="id" data-productid="{{ product.id }}" id="productSelect" class="product-single__variants">
+									{% for variant in product.variants %}
+									{% if variant.available %}
+									<option {% if variant == product.selected_or_first_available_variant %} selected="selected" {% endif %} data-sku="{{ variant.sku }}" value="{{ variant.id }}">{{ variant.title }} - {{ variant.price | money_with_currency }}</option>
+									{% else %}
+									<option disabled="disabled">
+										{{ variant.title }} - {{ 'products.product.sold_out' | t }}
+									</option>
+									{% endif %}
+									{% endfor %}
+								</select>
+								<span class="visually-hidden">{{ 'products.general.regular_price' | t }}</span>
+								<span id="ProductPrice" class="h2" itemprop="price" content="{{ current_variant.price | divided_by: 100 }}">
+									{{ current_variant.price | money }}
+								</span>
+								{% if product.compare_at_price_max > product.price %}
+								<span class="visually-hidden">{{ 'products.general.sale_price' | t }}</span>
+								<p id="ComparePrice">
+									{{ 'products.product.compare_at' | t }} {{ current_variant.compare_at_price | money }}
+								</p>
+								{% endif %}
+								<label for="Quantity" class="quantity-selector">{{ 'products.product.quantity' | t }}</label>
+								<input type="number" id="Quantity" name="quantity" value="1" min="1" class="quantity-selector">
+								<button type="submit" name="add" id="AddToCart" class="btn addToCart">
+									<span id="AddToCartText">{{ 'products.product.add_to_cart' | t }}</span>
+								</button>
+							</form>
+							{% include 'shipping-schema' %}
+						</div>
+					</div> <!-- grid__item large--one-half -->
+				</div> <!-- grid product-single -->
+
+
+				{% if product.available %}
+			</div> <!-- subscription-product-wrapper -->
+			{% endif %}
 
 			<div class="product-description rte" itemprop="description">
 				<hr>

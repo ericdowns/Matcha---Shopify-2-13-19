@@ -1,6 +1,3 @@
-/* @override 
-	https://raw.githack.com/ericdowns/Matcha---Shopify-2-13-19/master/assets/style-1.css */
-
 @font-face {
   font-family: 'icons';
   src: url("//rawcdn.githack.com/ericdowns/matcha-files/a2cd0abd51cb968e20c24aad94459f238ba50922/icons.eot");
@@ -102,8 +99,11 @@ input[type="search"]::-webkit-search-decoration {
   float: left;
   min-height: 1px;
   padding-left: 10px;
+  /* updated from -30 to remove extra padding - see .wrapper */
   vertical-align: top;
   width: 100%;
+  /* outline: 1px solid pink;
+  */
   margin-bottom: 3%;
 }
 
@@ -2048,7 +2048,7 @@ html input[disabled] {
 .rte .btn,
 .rte .btn--secondary {
   display: inline-block;
-  padding: 10px 0;
+  padding: 10px 20px;
   width: auto;
   margin: 0 0 5px;
   line-height: 1.42;
@@ -2074,7 +2074,6 @@ html input[disabled] {
   font-weight: 600;
   -webkit-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
-  min-width: 130px;
 }
 
 a.btn {
@@ -3804,8 +3803,3 @@ top: 0%;
 .navmenu-righthalf li {
   width: 24% !important;
 }
-
-
-
-
-
