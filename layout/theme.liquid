@@ -55,10 +55,7 @@
 	{{ 'shopify_common.js' | shopify_asset_url | script_tag }}
 	{% endif %}
 
-
 	{% include 'friendbuy-header' %}
-
-
 	<meta name="google-site-verification" content="SH83p1jVehwCES_4dW94ZoDZpeDmbTo5YlsxyhQB2is" />
 	<link rel="apple-touch-icon" sizes="180x180" href="{{ 'apple-touch-icon.png' | asset_url }}">
 	<link rel="icon" type="image/png" href="{{ 'favicon-32x32.png' | asset_url }}" sizes="32x32">
@@ -239,39 +236,39 @@
 			{{ 'timber.js' | asset_url | script_tag }}
 
 
-  {% comment %}
-  Template-specific js
-  {% endcomment %}
-  <script>
-  	{% if resetPassword %}
-  	$(function() {
-  		timber.resetPasswordSuccess();
-  	});
-  	{% endif %}
-  </script>
+			{% comment %}
+			Template-specific js
+			{% endcomment %}
+			<script>
+				{% if resetPassword %}
+				$(function() {
+					timber.resetPasswordSuccess();
+				});
+				{% endif %}
+			</script>
 
-  {% comment %}
-  Ajaxify your cart with this plugin.
-  Documentation:
-  - http://shopify.com/timber#ajax-cart
-  {% endcomment %}
-  {% if settings.ajax_cart_method == "drawer" %}
-  {{ 'handlebars.min.js' | asset_url | script_tag }}
-  {% include 'ajax-cart-template' %}
-  {{ 'ajax-cart.js' | asset_url | script_tag }}
-  <script>
-  	jQuery(function($) {
-  		ajaxCart.init({
-  			formSelector: '#AddToCartForm',
-  			cartContainer: '#CartContainer',
-  			addToCartSelector: '#AddToCart',
-  			cartCountSelector: '#CartCount',
-  			cartCostSelector: '#CartCost',
-  			moneyFormat: {{ shop.money_format | json }}
-  		});
-  	});
+			{% comment %}
+			Ajaxify your cart with this plugin.
+			Documentation:
+			- http://shopify.com/timber#ajax-cart
+			{% endcomment %}
+			{% if settings.ajax_cart_method == "drawer" %}
+			{{ 'handlebars.min.js' | asset_url | script_tag }}
+			{% include 'ajax-cart-template' %}
+			{{ 'ajax-cart.js' | asset_url | script_tag }}
+			<script>
+				jQuery(function($) {
+					ajaxCart.init({
+						formSelector: '#AddToCartForm',
+						cartContainer: '#CartContainer',
+						addToCartSelector: '#AddToCart',
+						cartCountSelector: '#CartCount',
+						cartCostSelector: '#CartCost',
+						moneyFormat: {{ shop.money_format | json }}
+					});
+				});
 
-  	jQuery('body').on('ajaxCart.afterCartLoad', function(evt, cart) {
+				jQuery('body').on('ajaxCart.afterCartLoad', function(evt, cart) {
 // Bind to 'ajaxCart.afterCartLoad' to run any javascript after the cart has loaded in the DOM
 timber.RightDrawer.open();
 });
