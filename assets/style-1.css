@@ -2416,6 +2416,8 @@ html input[disabled] {
 a.btn {
 	color: #fff !important;
 	font-weight: 600;
+	padding-right: 10px;
+	padding-left: 10px;
 }
 
 a.btn:hover {

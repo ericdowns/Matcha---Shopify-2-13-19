@@ -5547,3 +5547,36 @@ left: 0;
 width: 100%;
 }
 
+.section-cart-title-wrapper {
+	display: flex;
+	justify-content: space-between;
+	align-content: center;
+	align-items: center;
+	padding-bottom: 30px;
+}
+
+
+@media screen and (max-width: 950px) {
+	.section-cart-title-wrapper {
+	flex-wrap: wrap;
+justify-content: center;
+flex-direction: column;
+text-align: center;
+
+	}
+}
+
+
+
+.section-shopping-cart-empty {
+	text-align: center;
+	min-height: 40vh;
+	display: flex;
+	flex-direction: column;
+	align-content: center;
+	align-items: center;
+	justify-content: center;
+}
+
+
+

@@ -1,11 +1,19 @@
-
-
 {% include 'subscription-cart-footer' %}
 <div class="wrapper-full">
 	<div class="wrapper">
 		<div class="column100 section-shopping-cart">
+
+
+
+
+			
 			{% if cart.item_count > 0 %}
-			<h1>{{ 'cart.general.title' | t }}</h1>
+			
+			<div class="section-cart-title-wrapper">
+				<h1>{{ 'cart.general.title' | t }}</h1>
+				<a href="/collections/all" class="btn">Continue Shopping</a>
+			</div> <!-- section-cart-title-wrapper -->
+
 
       {% comment %}
       --------------------------------------------------------------------------------------------------
@@ -160,14 +168,18 @@
       	</div>
       </div>
   </form>
+
   {% else %}
-  {% comment %}
-    The cart is empty
-    {% endcomment %}
-    <h2>{{ 'cart.general.title' | t }}</h2>
-    <p>{{ 'cart.general.empty' | t }}</p>
-    <p>{{ 'cart.general.continue_browsing_html' | t }}</p>
-    {% endif %}
+  <div class="section-shopping-cart-empty">
+  	<h2>{{ 'cart.general.title' | t }}</h2>
+  	<p>{{ 'cart.general.empty' | t }}</p>
+  	<a href="/collections/all" class="btn">Continue Shopping</a>
+  </div> <!-- section-shopping-cart-empty -->
+  {% endif %}
+
+
+
+
 
 </div><!-- column100 section-shopping-cart -->
 </div><!-- wrapper-->
