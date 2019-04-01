@@ -1,0 +1,48 @@
+<div class="wrapper-full bg-image-team" style="background-image: url(https://cdn.shopify.com/s/files/1/1456/8506/files/press-hero.jpg?6349281784004452039)" />
+<div class="bg-image-team_textholder">
+	<h2>{{ page.title }}</h2>
+</div>
+</div><!-- wrapper-full-->
+<div class="wrapper-full">
+	<div class="wrapper">
+		<div class="section-team-member-wrapper">
+
+			{% if page.metafields.c_f.featuredimage %}
+			<div class="section-team-member-wrapper_img">
+				<img src="{{ page.metafields.c_f.featuredimage }}">
+			</div>
+			{% endif %}
+
+			<!--section-team-member-wrapper_img-->
+			<div class="section-team-member-wrapper_text">
+				{{ page.content }}
+			</div>
+			<!--section-team-member-wrapper_text-->
+		</div>
+		<!--section-team-member-wrapper-->
+	</div><!-- wrapper-->
+</div><!-- wrapper-full-->
+<div class="popup_overlay closed">
+	<div class="popup_content">
+		<iframe src="https://player.vimeo.com/video/317816784" width="640" height="360" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+		<span class="close_popup"></span>
+	</div> <!-- popup_content -->
+</div> <!-- popup_overlay closed -->
+<script>
+
+// Look into pausing video on close
+/*https://forum.webflow.com/t/how-to-pause-and-stop-a-video-in-a-modal-on-close/2366/3*/
+
+$(function() {
+	$(".video-popup").on( "click", function(event) {
+		event.preventDefault()
+		$( ".popup_overlay" ).toggleClass("open closed");
+	});
+	$(".popup_overlay").on( "click", function(event) {
+		$( ".popup_overlay" ).removeClass("open").addClass("closed");
+	});
+	$(".popup_overlay").on( "click", ".close_popup", function(event) {
+		$( ".popup_overlay" ).removeClass("open").addClass("closed");
+	});
+});
+</script>
