@@ -31,13 +31,15 @@
 	{% comment %}
 	https://raw.githack.com//
 	// During Dev we use these since Shopify caches our files and makes it so Esspresso won't work. 
-	{{ 'style.css' | asset_url | stylesheet_tag }}
-	{{ 'format.css' | asset_url | stylesheet_tag }}
-	{% endcomment %}
-
-
 	<link rel="stylesheet" type="text/css" href="https://raw.githack.com/ericdowns/Matcha---Shopify-2-13-19/master/assets/style-1.css">
 	<link rel="stylesheet" type="text/css" href="https://raw.githack.com/ericdowns/Matcha---Shopify-2-13-19/master/assets/format-wip-1.css"> 
+
+	{% endcomment %}
+
+	{{ 'style.css' | asset_url | stylesheet_tag }}
+	{{ 'format.css' | asset_url | stylesheet_tag }}
+
+
 
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 	{{ '//fonts.googleapis.com/css?family=Playfair+Display:400,400i,700,700i' | stylesheet_tag }}

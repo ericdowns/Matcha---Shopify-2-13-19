@@ -4395,7 +4395,7 @@ body .mp-bar-text {
 	margin-right: auto;
 	margin-left: auto;
 	max-width: 1800px;
-	min-height: 17vh;
+	min-height: 20vh;
 	position: relative;
 	display: -webkit-box;
 	display: -webkit-flex;
@@ -4435,6 +4435,12 @@ body .mp-bar-text {
 	text-align: center;
 }
 
+@media screen and (max-width: 950px) {
+	.bg-image-team_textholder {
+		width: 90%;
+	}
+}
+
 .bg-image-team_textholder h2 {
 	text-align: center;
 	color: #fff;
@@ -4442,6 +4448,13 @@ body .mp-bar-text {
 	line-height: 1;
 	margin: 0;
 }
+
+@media screen and (max-width: 950px) {
+	.bg-image-team_textholder h2 {
+		font-size: 30px;
+	}
+}
+
 
 .section-team-member-wrapper {
 	max-width: 1000px;
@@ -5538,13 +5551,12 @@ iframe {
 	min-width: auto;
 }
 
-
 #membership-products {
 	height: 100px;
-position: absolute;
-top: -50px;
-left: 0;
-width: 100%;
+	position: absolute;
+	top: -50px;
+	left: 0;
+	width: 100%;
 }
 
 .section-cart-title-wrapper {
@@ -5555,14 +5567,12 @@ width: 100%;
 	padding-bottom: 30px;
 }
 
-
 @media screen and (max-width: 950px) {
 	.section-cart-title-wrapper {
-	flex-wrap: wrap;
-justify-content: center;
-flex-direction: column;
-text-align: center;
-
+		flex-wrap: wrap;
+		justify-content: center;
+		flex-direction: column;
+		text-align: center;
 	}
 }
 
