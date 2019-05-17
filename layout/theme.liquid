@@ -10,6 +10,11 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
+	{% if search.performed %}
+	<!-- A search page -->
+	<meta name="robots" content="noindex">
+	{% endif %}
+
 	{% if settings.favicon_enable %}
 	<link rel="shortcut icon" href="{{ 'favicon.png' | asset_url }}" type="image/png" />
 	{% endif %}
@@ -23,59 +28,64 @@
 	{% endif %}
 	<!-- Helpers ================================================== -->
 	{% include 'social-meta-tags' %}
-	<link rel="canonical" href="{{ canonical_url }}">
+	{% if template contains 'collection' and current_tags %}
+	<link rel="canonical" href="{{ shop.url }}{{ collection.url }}" />
+	{% else %}
+	<link rel="canonical" href="{{ canonical_url }}" />
+	{% endif %}
 	<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
 	<meta name="theme-color" content="{{ settings.color_primary }}">
-	
 
-	{% comment %}
+
+
+	<link rel="stylesheet" type="text/css" href="https://raw.githack.com/ericdowns/Matcha---Shopify-2-13-19/master/assets/format.css"> 
+
+
+{% comment %}
 	https://raw.githack.com//
-	// During Dev we use these since Shopify caches our files and makes it so Esspresso won't work. 
-	<link rel="stylesheet" type="text/css" href="https://raw.githack.com/ericdowns/Matcha---Shopify-2-13-19/master/assets/style-1.css">
-	<link rel="stylesheet" type="text/css" href="https://raw.githack.com/ericdowns/Matcha---Shopify-2-13-19/master/assets/format-wip-1.css"> 
-
-	{% endcomment %}
-
-	{{ 'style.css' | asset_url | stylesheet_tag }}
-	{{ 'format.css' | asset_url | stylesheet_tag }}
+// During Dev we use these since Shopify caches our files and makes it so Esspresso won't work. 
+<link rel="stylesheet" type="text/css" href="https://raw.githack.com/ericdowns/Matcha---Shopify-2-13-19/master/assets/style-1.css">
+{{ 'format.css' | asset_url | stylesheet_tag }}
+{% endcomment %}
 
 
-
-	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-	{{ '//fonts.googleapis.com/css?family=Playfair+Display:400,400i,700,700i' | stylesheet_tag }}
-	{{ '//fonts.googleapis.com/css?family=Crimson+Text:400,400i,600,600i,700,700i' | stylesheet_tag }}  
-	{{ '//fonts.googleapis.com/css?family=Pathway+Gothic+One' | stylesheet_tag }}
-	{{ '//fonts.googleapis.com/css?family=Montserrat:400,500,600,700' | stylesheet_tag }}
-
-	<!-- Header hook for plugins ================================================== -->
-	{{ content_for_header }}
-	{% include 'oldIE-js' %}
-	{{ '//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js' | script_tag }}
-	{{ 'modernizr.min.js' | asset_url | script_tag }}
+{{ 'style.css' | asset_url | stylesheet_tag }}
 
 
-	{% if template contains 'customers' %}
-	{{ 'shopify_common.js' | shopify_asset_url | script_tag }}
-	{% endif %}
 
-	{% include 'friendbuy-header' %}
-	<meta name="google-site-verification" content="SH83p1jVehwCES_4dW94ZoDZpeDmbTo5YlsxyhQB2is" />
-	<link rel="apple-touch-icon" sizes="180x180" href="{{ 'apple-touch-icon.png' | asset_url }}">
-	<link rel="icon" type="image/png" href="{{ 'favicon-32x32.png' | asset_url }}" sizes="32x32">
-	<link rel="icon" type="image/png" href="{{ 'favicon-16x16.png' | asset_url }}" sizes="16x16">
-	<link rel="manifest" href="{{ 'manifest.json' | asset_url }}">
-	<link rel="mask-icon" href="{{ 'safari-pinned-tab.svg' | asset_url }}" color="#5bbad5">
-	<meta name="theme-color" content="#ffffff">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+{{ '//fonts.googleapis.com/css?family=Playfair+Display:400,400i,700,700i' | stylesheet_tag }}
+{{ '//fonts.googleapis.com/css?family=Crimson+Text:400,400i,600,600i,700,700i' | stylesheet_tag }}  
+{{ '//fonts.googleapis.com/css?family=Pathway+Gothic+One' | stylesheet_tag }}
+{{ '//fonts.googleapis.com/css?family=Montserrat:400,500,600,700' | stylesheet_tag }}
+
+<!-- Header hook for plugins ================================================== -->
+{{ content_for_header }}
+{% include 'oldIE-js' %}
+{{ '//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js' | script_tag }}
+{{ 'modernizr.min.js' | asset_url | script_tag }}
+
+
+{% if template contains 'customers' %}
+{{ 'shopify_common.js' | shopify_asset_url | script_tag }}
+{% endif %}
+
+{% include 'friendbuy-header' %}
+<meta name="google-site-verification" content="SH83p1jVehwCES_4dW94ZoDZpeDmbTo5YlsxyhQB2is" />
+<link rel="apple-touch-icon" sizes="180x180" href="{{ 'apple-touch-icon.png' | asset_url }}">
+<link rel="icon" type="image/png" href="{{ 'favicon-32x32.png' | asset_url }}" sizes="32x32">
+<link rel="icon" type="image/png" href="{{ 'favicon-16x16.png' | asset_url }}" sizes="16x16">
+<link rel="manifest" href="{{ 'manifest.json' | asset_url }}">
+<link rel="mask-icon" href="{{ 'safari-pinned-tab.svg' | asset_url }}" color="#5bbad5">
+<meta name="theme-color" content="#ffffff">
 </head>
 
 <body id="{{ page_title | handle }}" class="{% if customer %}customer-logged-in {% endif %}template-{{ template | replace: '.', ' ' | truncatewords: 1, '' | handle }}" >
 
 	{% include 'membership-header' %}
-
 	{% if page.handle == 'membership' or template == 'index' %}
 	{% endif %}
-
-
 
 	<div class="msgOverlay">
 		<div class="msgText">
@@ -163,17 +173,17 @@
 					<ul class="site-nav-new" id="AccessibleNav">
 						<div class="navmenu-lefthalf">
 							<li class="nav-item shop"><a href="/collections/all">Shop</a></li>
+							<li class="nav-item"><a href="/pages/membership">Subscribe + Save</a></li> 
 							<li class="nav-item lean"><a href="/pages/learn">Learn</a></li>
 							<li class="nav-item story"><a href="/pages/our-story">Our Story</a></li>
-							<li class="nav-item journal"><a href="/blogs/news">Journal</a></li>    
 						</div><!-- navmenu-lefthalf -->
 						<div class="navmenu-logoholder">
 							<li class="logo">
 								<span itemscope itemtype="http://schema.org/Organization">
-									<a href="/" itemprop="url">{{ 'logo.png' | asset_url | img_tag }}</a></span></li>
+									<a href="/" itemprop="url">{{ 'logo.png' | asset_url | img_tag: 'Matcha Tea' }}</a></span></li>
 								</div><!-- navmenu-logoholder -->
 								<div class="navmenu-righthalf">
-									<li class="nav-item"><a href="/pages/membership">Subscribe + Save</a></li> 
+									<li class="nav-item journal"><a href="/blogs/news">Journal</a></li>    
 									<li class="nav-item"><a href="/pages/refer-a-friend">Get $10</a></li> 									
 									<li class="nav-item login">
 										{% if customer %}
@@ -191,6 +201,7 @@
 							</ul> <!-- AccessibleNav -->
 						</div><!-- medium-down--hide -->
 						<!-- Ends Desktop Navigation ================================================== -->
+
 						<div class="large--hide medium-down--show">
 							<div class="grid">
 								<div class="column25 section-menu-nav">
@@ -230,39 +241,39 @@
 
 			{{ 'fastclick.min.js' | asset_url | script_tag }}
 			{{ 'timber.js' | asset_url | script_tag }}
-			{% comment %}
-			Template-specific js
-			{% endcomment %}
-			<script>
-				{% if resetPassword %}
-				$(function() {
-					timber.resetPasswordSuccess();
-				});
-				{% endif %}
-			</script>
+		{% comment %}
+		Template-specific js
+		{% endcomment %}
+		<script>
+			{% if resetPassword %}
+			$(function() {
+				timber.resetPasswordSuccess();
+			});
+			{% endif %}
+		</script>
 
-			{% comment %}
-			Ajaxify your cart with this plugin.
-			Documentation:
-			- http://shopify.com/timber#ajax-cart
-			{% endcomment %}
-			{% if settings.ajax_cart_method == "drawer" %}
-			{{ 'handlebars.min.js' | asset_url | script_tag }}
-			{% include 'ajax-cart-template' %}
-			{{ 'ajax-cart.js' | asset_url | script_tag }}
-			<script>
-				jQuery(function($) {
-					ajaxCart.init({
-						formSelector: '#AddToCartForm',
-						cartContainer: '#CartContainer',
-						addToCartSelector: '#AddToCart',
-						cartCountSelector: '#CartCount',
-						cartCostSelector: '#CartCost',
-						moneyFormat: {{ shop.money_format | json }}
-					});
+		{% comment %}
+		Ajaxify your cart with this plugin.
+		Documentation:
+		- http://shopify.com/timber#ajax-cart
+		{% endcomment %}
+		{% if settings.ajax_cart_method == "drawer" %}
+		{{ 'handlebars.min.js' | asset_url | script_tag }}
+		{% include 'ajax-cart-template' %}
+		{{ 'ajax-cart.js' | asset_url | script_tag }}
+		<script>
+			jQuery(function($) {
+				ajaxCart.init({
+					formSelector: '#AddToCartForm',
+					cartContainer: '#CartContainer',
+					addToCartSelector: '#AddToCart',
+					cartCountSelector: '#CartCount',
+					cartCostSelector: '#CartCost',
+					moneyFormat: {{ shop.money_format | json }}
 				});
+			});
 
-				jQuery('body').on('ajaxCart.afterCartLoad', function(evt, cart) {
+			jQuery('body').on('ajaxCart.afterCartLoad', function(evt, cart) {
 // Bind to 'ajaxCart.afterCartLoad' to run any javascript after the cart has loaded in the DOM
 timber.RightDrawer.open();
 });
@@ -280,6 +291,9 @@ timber.RightDrawer.open();
 <!-- Begin ReCharge code -->
 {% include 'subscription-theme-footer' %}
 <!-- End ReCharge code -->
+
+
+
 
 
 {% comment %}

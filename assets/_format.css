@@ -1,11 +1,3 @@
-/* @override 
-	https://raw.githack.com/ericdowns/Matcha---Shopify-2-13-19/master/assets/format_wip.css
-	https://raw.githack.com/ericdowns/Matcha---Shopify-2-13-19/master/assets/format-wip.css
-	https://raw.githack.com/ericdowns/Matcha---Shopify-2-13-19/2f7e5c6641fea1f712538ea8162f9b407ad82cfd/assets/format-wip.css
-	https://raw.githack.com/ericdowns/Matcha---Shopify-2-13-19/49d4f22b75ebc2eeb9fd6c151fd7a7f923e60fc9/assets/format-wip.css
-	https://raw.githack.com/ericdowns/Matcha---Shopify-2-13-19/master/assets/format-wip-1.css
-	https://raw.githack.com/ericdowns/Matcha---Shopify-2-13-19/master/assets/format.css */
-
 * {
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
@@ -250,6 +242,8 @@ img {
 	justify-content: space-between;
 	align-items: center;
 	align-content: c;
+	padding-right: 2%;
+	padding-left: 2%;
 }
 
 .nav-bar-new {
@@ -292,7 +286,7 @@ img {
 }
 
   .navmenu-lefthalf li {
-	width: 24%;
+	/*width: 24%;*/
 }
 
 @media all and (max-width: 1050px) {
@@ -304,6 +298,7 @@ img {
   .navmenu-righthalf {
 	width: 40%;
 	display: flex;
+	justify-content: space-between;
 }
 
 @media screen and (max-width: 1050px) {
@@ -317,7 +312,7 @@ img {
 }
 
 .navmenu-righthalf li {
-	flex-basis: 20%;
+	/*	flex-basis: 20%;*/
 }
 
 .navmenu-righthalf li.search, 
@@ -370,6 +365,7 @@ img {
 	transition: all .2s ease-in-out;
 	font-weight: 600;
 	white-space: nowrap;
+	/*	outline: 1px solid red;*/
 }
 
 .nav-bar-new li a .icon img {
@@ -458,7 +454,6 @@ img {
 .column100.footerwrapper {
 	background: url(https://cdn.shopify.com/s/files/1/1456/8506/files/footer-leaf-stick.jpg?7440170441174165006) right top no-repeat;
 	position: relative;
-	padding-bottom: 20px;
 }
 
 @media all and (max-width: 600px) {
@@ -560,7 +555,7 @@ img {
   .site-footer .column25 ul.footernav li {
 	list-style: none;
 	font-size: 13px;
-	line-height: 3.2;
+	line-height: 2.8;
 	text-align: center;
 	font-weight: 600;
 }
@@ -585,8 +580,6 @@ img {
 	.site-footer .column25 ul.footersocials {
 		width: 300px;
 		margin-top: 0;
-		padding-top: 0;
-		padding-bottom: 0;
 	}
 }
 
@@ -5593,110 +5586,4 @@ iframe {
 }
 
 
-.section-footer-badges-wrapper {
-	display: flex;
-justify-content:center;
-padding-top: 40px;
-	padding-bottom: 40px;
-}
 
-@media screen and (max-width: 750px) {
-	.section-footer-badges-wrapper {
-	flex-wrap: wrap;
-	padding-bottom: 0;
-	}
-}
-
-
-.badge-item {
-	margin-right: 2%;
-	margin-left: 2%;
-display: flex;
-justify-content: center;
-align-items: center;
-align-content: center;
-
-}
-
-@media screen and (max-width: 750px) {
-.badge-item {
-flex-basis: 28%;
-margin-bottom: 20px;
-order: 2;
-}
-}
-
-
-@media screen and (max-width: 750px) {
-.badge-item.return-seal {
-flex-basis: 100%;
-margin-bottom: 30px;
-order: 1;
-}
-
-}
-
-@media screen and (max-width: 750px) {
-.badge-item.return-seal img{
-width: 30%;
-max-width: 140px;
-}
-}
-
-
-.badge-item td{
-	padding: 0;
-}
-
-
-.badge-item td {
-	border: none;
-}
-
-.badge-item td img{
-	padding: 0;
-	max-width: 130px;
-	margin-right: auto;
-	margin-left: auto;
-}
-
-.badge-item img{
-border: none!important;
-display: block;
-}
-
-
-.footer-address {
-display: block;
-padding-top: 10px;
-font: 10px montserrat,sans-serif;
-text-transform: uppercase;
-letter-spacing: .1em;
-color: #747474;
-padding-bottom: 10px;
-font-weight: 500;	
-}
-
-@media screen and (max-width: 750px) {
-	.footer-address {
-display: block;
-font-size: 12px;
-line-height: 1.5;	
-}
-}
-
-.section-footer-payments {
-	display: flex;
-	width: 100%;
-	justify-content: center;
-	margin-right: auto;
-	margin-left: auto;
-	padding-bottom: 20px;
-	border-top: 1px solid #E5E5E5;
-	padding-top: 20px;
-}
-
-
-#preview-bar-iframe {
-	display: none!important;
-}
